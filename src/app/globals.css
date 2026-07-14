@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+:root {
+  --background: #030303;
+  --foreground: #f4f4f5;
+  --accent-emerald: #10b981;
+  --accent-teal: #14b8a6;
+  --card-bg: rgba(9, 9, 11, 0.7);
+  --card-border: rgba(39, 39, 42, 0.4);
+  --text-secondary: #a1a1aa;
+  
+  /* Enhanced Liquid Glass System Tokens (Apple-inspired) */
+  --glass-opacity: 0.54;
+  --glass-blur: 28px;
+  --glass-border-opacity: 0.18;
+  --glass-highlight-opacity: 0.16;
+  --glass-shadow-strength: 0.65;
+  --glass-reflection-opacity: 0.22;
+  --glass-accent-opacity: 0.16;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent-emerald: var(--accent-emerald);
+  --color-accent-teal: var(--accent-teal);
+  --color-card-bg: var(--card-bg);
+  --color-card-border: var(--card-border);
+  --color-text-secondary: var(--text-secondary);
+  
+  --font-sans: var(--font-geist-sans), Inter, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Slowly Drifting Grid Background */
+@keyframes grid-drift {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 50px 50px;
+  }
+}
+
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -20;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at 50% 50%, black 75%, transparent 100%);
+  pointer-events: none;
+  animation: grid-drift 24s linear infinite;
+}
+
+/* Slow-moving organic ambient glow orbs */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(50px, -60px) scale(1.15) rotate(120deg);
+  }
+  66% {
+    transform: translate(-30px, 40px) scale(0.9) rotate(240deg);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
+  }
+}
+
+.animate-blob {
+  animation: blob 25s infinite alternate ease-in-out;
+}
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+.animate-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Breathing profile glow behind avatar */
+@keyframes profile-glow {
+  0% {
+    transform: scale(0.93) translate3d(0, 0, 0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.07) translate3d(0, 0, 0);
+    opacity: 0.75;
+  }
+  100% {
+    transform: scale(0.93) translate3d(0, 0, 0);
+    opacity: 0.4;
+  }
+}
+
+.animate-profile-glow {
+  animation: profile-glow 16s infinite ease-in-out;
+}
+
+/* Mouse Glow Effect */
+.glow-effect {
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(16, 185, 129, 0.04) 0%,
+    rgba(20, 184, 166, 0.02) 40%,
+    transparent 70%
+  );
+  border-radius: inherit;
+  z-index: -10;
+  pointer-events: none;
+}
+
+/* Card Glow Effect (Dynamic Border Glow) */
+.card-glow {
+  position: relative;
+}
+.card-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+    rgba(16, 185, 129, 0.12),
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Clean Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #030303;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Printable PDF Resume classes */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-card {
+    border: 1px solid #e4e4e7 !important;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+}
