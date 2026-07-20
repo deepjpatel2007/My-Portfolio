@@ -187,7 +187,7 @@ export const projects: Project[] = [
   },
   {
     slug: "assistive-mobility-device",
-    title: "Assistive-Mobility-Device-Engineering-Project",
+    title: "Assistive Mobility Device Engineering Project",
     description: "An Arduino-powered assistive mobility device engineered for enhanced accessibility, featuring embedded control systems, a custom CAD chassis, and real-time sensory alerts.",
     category: "Embedded",
     techStack: ["C++", "Arduino", "Embedded Systems", "CAD/SolidWorks", "Accelerometers", "Haptic Feedback"],

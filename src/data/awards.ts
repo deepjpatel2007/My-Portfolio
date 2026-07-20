@@ -22,17 +22,17 @@ export const awards: Award[] = [
     ]
   },
   {
-    title: "1st Place - Guelph Engineering Competition",
+    title: "🏆 1st Place — Guelph Engineering Competition",
     issuer: "University of Guelph",
     date: "Jan 2026",
-    description: "Placed 1st in the Guelph Engineering Competition (GEC), designing and prototyping optimized hardware/software solutions under strict time limits.",
+    description: "Awarded 1st Place at the University of Guelph Engineering Competition for developing an optimized engineering solution under real-world design constraints. Qualified to represent the university at the Ontario Engineering Competition (OEC).",
     category: "honour"
   },
   {
-    title: "2nd Place & Fastest Vehicle Award - Assistive-Mobility-Device-Engineering-Project",
+    title: "🥈 2nd Place & Fastest Vehicle Award — Assistive Mobility Device Engineering Project",
     issuer: "University of Guelph",
     date: "Oct 2025",
-    description: "Achieved second place and won the Fastest Vehicle Award in the design exhibition, recognized for SolidWorks CAD design, MPU6050 IMU calibration, and haptic safety watchdog firmware.",
+    description: "Designed and built an Arduino-powered assistive mobility device, contributing to embedded programming, hardware integration, and iterative engineering design. Awarded Fastest Vehicle and 2nd Place Overall for performance, stability, and innovation.",
     category: "honour"
   },
   // Professional Certifications
