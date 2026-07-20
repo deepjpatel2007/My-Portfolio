@@ -305,11 +305,11 @@ export const GlobalInteractiveBackground: React.FC = () => {
         />
       )}
 
-      {/* 4. Soft Touch Spotlight Radial Glow (z-index: 3, diameter 260px, opacity governed by CSS var transition) */}
+      {/* 4. Soft Touch Spotlight Radial Glow (z-index: 3, diameter 420px [360-460px range], opacity governed by CSS var transition) */}
       <div
         className="mobile-touch-glow fixed inset-0 pointer-events-none mix-blend-screen z-[3] opacity-0"
         style={{
-          background: 'radial-gradient(130px circle at var(--touch-x, -999px) var(--touch-y, -999px), rgba(0, 220, 165, 0.16) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 70%)',
+          background: 'radial-gradient(210px circle at var(--touch-x, -999px) var(--touch-y, -999px), rgba(0, 220, 165, 0.12) 0%, rgba(16, 185, 129, 0.04) 45%, transparent 70%)',
           willChange: 'opacity',
         }}
       />

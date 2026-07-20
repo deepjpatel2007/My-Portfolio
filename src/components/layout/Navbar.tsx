@@ -19,24 +19,12 @@ const navItems = [
   { name: 'Contact', path: '/contact' }
 ];
 
-const HamburgerIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
+const HamburgerIcon: React.FC<{ isOpen?: boolean }> = () => {
   return (
     <div className="w-5 h-5 flex flex-col justify-center items-center gap-1.5 relative">
-      <motion.span
-        animate={isOpen ? { rotate: 45, y: 5.5 } : { rotate: 0, y: 0 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-        className="w-5 h-[2px] bg-emerald-400 rounded-full block origin-center"
-      />
-      <motion.span
-        animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.15 }}
-        className="w-5 h-[2px] bg-emerald-400 rounded-full block"
-      />
-      <motion.span
-        animate={isOpen ? { rotate: -45, y: -5.5 } : { rotate: 0, y: 0 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-        className="w-5 h-[2px] bg-emerald-400 rounded-full block origin-center"
-      />
+      <span className="w-5 h-[2px] bg-emerald-400 rounded-full block" />
+      <span className="w-5 h-[2px] bg-emerald-400 rounded-full block" />
+      <span className="w-5 h-[2px] bg-emerald-400 rounded-full block" />
     </div>
   );
 };
