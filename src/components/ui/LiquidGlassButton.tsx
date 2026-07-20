@@ -119,6 +119,8 @@ export const LiquidGlassButton: React.FC<LiquidGlassButtonProps> = ({
       onMouseLeave={handleMouseLeave}
       onMouseDown={() => setIsPressed(true)}
       onMouseUp={() => setIsPressed(false)}
+      onTouchStart={() => setIsPressed(true)}
+      onTouchEnd={() => setIsPressed(false)}
       style={{
         x: springX,
         y: springY,

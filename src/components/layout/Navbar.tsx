@@ -4,8 +4,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Cpu } from 'lucide-react';
+import { Cpu } from 'lucide-react';
 import { LiquidGlassButton } from '../ui/LiquidGlassButton';
+import { Github, Linkedin } from '../ui/BrandIcons';
 
 const navItems = [
   { name: 'Home', path: '/' },
@@ -18,6 +19,28 @@ const navItems = [
   { name: 'Contact', path: '/contact' }
 ];
 
+const HamburgerIcon: React.FC<{ isOpen: boolean }> = ({ isOpen }) => {
+  return (
+    <div className="w-5 h-5 flex flex-col justify-center items-center gap-1.5 relative">
+      <motion.span
+        animate={isOpen ? { rotate: 45, y: 5.5 } : { rotate: 0, y: 0 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+        className="w-5 h-[2px] bg-emerald-400 rounded-full block origin-center"
+      />
+      <motion.span
+        animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
+        transition={{ duration: 0.15 }}
+        className="w-5 h-[2px] bg-emerald-400 rounded-full block"
+      />
+      <motion.span
+        animate={isOpen ? { rotate: -45, y: -5.5 } : { rotate: 0, y: 0 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+        className="w-5 h-[2px] bg-emerald-400 rounded-full block origin-center"
+      />
+    </div>
+  );
+};
+
 export const Navbar: React.FC = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
@@ -28,6 +51,9 @@ export const Navbar: React.FC = () => {
   const navRef = useRef<HTMLDivElement>(null);
   const navGlowRef = useRef<HTMLDivElement>(null);
   const navCoords = useRef({ targetX: 0, targetY: 0, currentX: 0, currentY: 0, opacity: 0, targetOpacity: 0 });
+
+  const menuRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
@@ -58,6 +84,56 @@ export const Navbar: React.FC = () => {
     return () => {
       document.body.style.overflow = '';
     };
+  }, [isOpen]);
+
+  // Close mobile nav on Escape key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+    if (isOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
+
+  // Trap focus inside open mobile menu
+  useEffect(() => {
+    if (!isOpen) {
+      triggerRef.current?.focus();
+      return;
+    }
+
+    const focusableElements = menuRef.current?.querySelectorAll(
+      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+    if (!focusableElements || focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0] as HTMLElement;
+    const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+
+    firstElement.focus();
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          lastElement.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          firstElement.focus();
+          e.preventDefault();
+        }
+      }
+    };
+
+    window.addEventListener('keydown', handleTab);
+    return () => window.removeEventListener('keydown', handleTab);
   }, [isOpen]);
 
   // RequestAnimationFrame loop for smoothing cursor spotlight inside navigation container
@@ -195,13 +271,20 @@ export const Navbar: React.FC = () => {
             </Link>
           </div>
 
-          {/* Mobile Navigation Trigger */}
+          {/* Mobile Navigation Trigger styled as a Liquid Glass button */}
           <button
+            ref={triggerRef}
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden flex items-center justify-center p-2 rounded-lg border border-zinc-900 bg-zinc-950/80 text-zinc-400 hover:text-white transition-colors"
+            className="md:hidden flex items-center justify-center w-11 h-11 rounded-xl bg-[rgba(18,24,26,0.58)] border border-[rgba(255,255,255,0.18)] shadow-[0_4px_12px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.15)] active:scale-95 active:bg-[rgba(18,24,26,0.72)] transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 backdrop-blur-md cursor-pointer select-none relative z-50"
+            style={{
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+            }}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {/* Top rim bevel */}
+            <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
+            <HamburgerIcon isOpen={isOpen} />
           </button>
         </div>
       </header>
@@ -210,36 +293,63 @@ export const Navbar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            ref={menuRef}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden overflow-y-auto flex flex-col no-print overscroll-behavior-y-contain"
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed inset-0 z-40 bg-[rgba(10,12,14,0.68)] backdrop-blur-[24px] md:hidden overflow-y-auto flex flex-col no-print overscroll-behavior-y-contain border-b border-emerald-500/10 shadow-[0_20px_50px_rgba(0,0,0,0.85)]"
             style={{
-              paddingTop: 'calc(env(safe-area-inset-top) + 6rem)',
-              paddingBottom: 'calc(env(safe-area-inset-bottom) + 2rem)',
+              paddingTop: 'calc(env(safe-area-inset-top) + 6.5rem)',
+              paddingBottom: 'calc(env(safe-area-inset-bottom) + 2.5rem)',
               paddingLeft: 'calc(env(safe-area-inset-left) + 1.5rem)',
               paddingRight: 'calc(env(safe-area-inset-right) + 1.5rem)',
             }}
           >
-            <div className="flex-grow flex flex-col justify-between gap-10 min-h-0">
-              <div className="flex flex-col gap-4">
+            {/* Vignette styling overlay inside panel */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_60%,rgba(0,0,0,0.4)_100%)] pointer-events-none z-[1]" />
+            <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none z-[2]" />
+
+            <div className="flex-grow flex flex-col justify-between gap-10 min-h-0 relative z-10">
+              <div className="flex flex-col gap-3">
                 {navItems.map((item, idx) => {
                   const isActive = pathname === item.path || (item.path !== '/' && pathname?.startsWith(item.path));
                   return (
                     <motion.div
                       key={item.path}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -15 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.03 }}
+                      transition={{ delay: idx * 0.04, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <Link
                         href={item.path}
-                        className={`block text-2xl font-semibold tracking-tight py-2 border-b border-zinc-900 ${
-                          isActive ? 'text-emerald-400' : 'text-zinc-500 hover:text-white'
+                        onClick={() => setIsOpen(false)}
+                        className={`group relative flex items-center justify-between w-full min-h-[56px] px-6 rounded-2xl border text-sm font-semibold tracking-wide transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 backdrop-blur-md select-none overflow-hidden active:scale-[0.98] ${
+                          isActive
+                            ? 'bg-[rgba(16,185,129,0.18)] border-[rgba(0,220,165,0.45)] text-emerald-300 shadow-[inset_0_1px_2px_rgba(255,255,255,0.22),_0_0_15px_rgba(0,220,165,0.15)]'
+                            : 'bg-[rgba(18,24,26,0.48)] border-[rgba(255,255,255,0.12)] text-zinc-300 hover:text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] active:bg-[rgba(18,24,26,0.68)] active:border-[rgba(255,255,255,0.22)]'
                         }`}
+                        style={{
+                          backdropFilter: 'blur(16px)',
+                          WebkitBackdropFilter: 'blur(16px)',
+                        }}
                       >
-                        {item.name}
+                        {/* Top reflection highlight */}
+                        <div className={`absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/${isActive ? '25' : '12'} to-transparent pointer-events-none`} />
+
+                        {/* Glow indicator on active */}
+                        {isActive && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 via-transparent to-transparent pointer-events-none" />
+                        )}
+
+                        <span className="relative z-10 flex items-center gap-3">
+                          {isActive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />}
+                          {item.name}
+                        </span>
+
+                        <span className={`text-xs font-mono transition-transform duration-300 group-active:translate-x-1 ${isActive ? 'text-emerald-400' : 'text-zinc-600'}`}>
+                          0{idx + 1} →
+                        </span>
                       </Link>
                     </motion.div>
                   );
@@ -247,21 +357,58 @@ export const Navbar: React.FC = () => {
               </div>
 
               <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.25 }}
-                className="flex flex-col gap-4 mt-auto"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col gap-6 mt-auto"
               >
                 <Link
                   href="/contact"
-                  className="w-full text-center py-3 rounded-xl bg-emerald-500 text-zinc-950 font-medium hover:bg-emerald-400 transition-colors"
+                  onClick={() => setIsOpen(false)}
+                  className="relative flex items-center justify-center w-full min-h-[56px] rounded-2xl bg-gradient-to-b from-[rgba(16,185,129,0.25)] to-[rgba(16,185,129,0.08)] border border-[rgba(0,220,165,0.55)] text-emerald-300 font-semibold text-sm tracking-wider uppercase shadow-[0_8px_32px_rgba(0,0,0,0.6),_inset_0_1px_2px_rgba(255,255,255,0.25),_0_0_18px_rgba(0,220,165,0.25)] active:scale-[0.97] active:shadow-[0_4px_16px_rgba(0,0,0,0.7)] transition-all duration-300 backdrop-blur-md overflow-hidden"
+                  style={{
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                  }}
                 >
+                  {/* Highlight Bevel */}
+                  <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/30 to-transparent pointer-events-none" />
+                  
+                  {/* Internal Glow Overlay */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,220,165,0.2)_0%,transparent_70%)] pointer-events-none" />
+
                   Get in Touch
                 </Link>
-                <div className="flex justify-center gap-6 text-sm text-zinc-500 font-mono">
-                  <a href="https://github.com/deepjpatel2007" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400">GH</a>
-                  <span>•</span>
-                  <a href="https://www.linkedin.com/in/deeppatel2007/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400">LI</a>
+
+                <div className="flex justify-center gap-4">
+                  <a
+                    href="https://github.com/deepjpatel2007"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
+                    className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-[rgba(18,24,26,0.58)] border border-[rgba(255,255,255,0.18)] shadow-[0_4px_12px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.15)] active:scale-95 transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 backdrop-blur-md text-zinc-400 hover:text-emerald-400"
+                    style={{
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
+                    }}
+                  >
+                    <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+                    <Github className="w-5 h-5" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/deeppatel2007/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
+                    className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-[rgba(18,24,26,0.58)] border border-[rgba(255,255,255,0.18)] shadow-[0_4px_12px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.15)] active:scale-95 transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 backdrop-blur-md text-zinc-400 hover:text-emerald-400"
+                    style={{
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
+                    }}
+                  >
+                    <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+                    <Linkedin className="w-5 h-5" />
+                  </a>
                 </div>
               </motion.div>
             </div>

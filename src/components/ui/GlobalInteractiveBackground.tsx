@@ -219,6 +219,33 @@ export const GlobalInteractiveBackground: React.FC = () => {
     };
     document.addEventListener('visibilitychange', handleVisibilityChange);
 
+    // Global touch tracking for mobile touch glow spotlight
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      const touch = e.touches[0];
+      document.documentElement.style.setProperty('--touch-x', `${touch.clientX}px`);
+      document.documentElement.style.setProperty('--touch-y', `${touch.clientY}px`);
+      document.documentElement.style.setProperty('--touch-active', '1');
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      const touch = e.touches[0];
+      requestAnimationFrame(() => {
+        document.documentElement.style.setProperty('--touch-x', `${touch.clientX}px`);
+        document.documentElement.style.setProperty('--touch-y', `${touch.clientY}px`);
+      });
+    };
+
+    const handleTouchEnd = () => {
+      document.documentElement.style.setProperty('--touch-active', '0');
+    };
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    window.addEventListener('touchcancel', handleTouchEnd, { passive: true });
+
     // Initial render
     if (isMobile || prefersReducedMotion) {
       drawStaticGrid(width, height);
@@ -232,6 +259,10 @@ export const GlobalInteractiveBackground: React.FC = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
       document.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('touchstart', handleTouchStart);
+      window.removeEventListener('touchmove', handleTouchMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('touchcancel', handleTouchEnd);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
@@ -274,7 +305,20 @@ export const GlobalInteractiveBackground: React.FC = () => {
         />
       )}
 
+      {/* 4. Soft Touch Spotlight Radial Glow (z-index: 3, diameter 260px, opacity governed by CSS var transition) */}
+      <div
+        className="mobile-touch-glow fixed inset-0 pointer-events-none mix-blend-screen z-[3] opacity-0"
+        style={{
+          background: 'radial-gradient(130px circle at var(--touch-x, -999px) var(--touch-y, -999px), rgba(0, 220, 165, 0.16) 0%, rgba(16, 185, 129, 0.05) 50%, transparent 70%)',
+          willChange: 'opacity',
+        }}
+      />
+
       <style jsx global>{`
+        .mobile-touch-glow {
+          opacity: var(--touch-active, 0);
+          transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
         @keyframes ambient-slow-1 {
           0% { transform: translate3d(0, 0, 0) scale(1); }
           50% { transform: translate3d(30px, 20px, 0) scale(1.04); }
