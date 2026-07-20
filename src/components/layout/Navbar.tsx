@@ -48,6 +48,18 @@ export const Navbar: React.FC = () => {
     setIsOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile navigation is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   // RequestAnimationFrame loop for smoothing cursor spotlight inside navigation container
   useEffect(() => {
     const navEl = navRef.current;
@@ -194,7 +206,7 @@ export const Navbar: React.FC = () => {
         </div>
       </header>
 
-      {/* Mobile Navigation Panel */}
+      {/* Mobile Navigation Panel (supports scroll in landscape and iOS safe areas) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -202,49 +214,57 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden pt-28 px-6 flex flex-col justify-between pb-10 no-print"
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden overflow-y-auto flex flex-col no-print overscroll-behavior-y-contain"
+            style={{
+              paddingTop: 'calc(env(safe-area-inset-top) + 6rem)',
+              paddingBottom: 'calc(env(safe-area-inset-bottom) + 2rem)',
+              paddingLeft: 'calc(env(safe-area-inset-left) + 1.5rem)',
+              paddingRight: 'calc(env(safe-area-inset-right) + 1.5rem)',
+            }}
           >
-            <div className="flex flex-col gap-4">
-              {navItems.map((item, idx) => {
-                const isActive = pathname === item.path || (item.path !== '/' && pathname?.startsWith(item.path));
-                return (
-                  <motion.div
-                    key={item.path}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.05 }}
-                  >
-                    <Link
-                      href={item.path}
-                      className={`block text-2xl font-semibold tracking-tight py-2 border-b border-zinc-900 ${
-                        isActive ? 'text-emerald-400' : 'text-zinc-500 hover:text-white'
-                      }`}
+            <div className="flex-grow flex flex-col justify-between gap-10 min-h-0">
+              <div className="flex flex-col gap-4">
+                {navItems.map((item, idx) => {
+                  const isActive = pathname === item.path || (item.path !== '/' && pathname?.startsWith(item.path));
+                  return (
+                    <motion.div
+                      key={item.path}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.03 }}
                     >
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="flex flex-col gap-4"
-            >
-              <Link
-                href="/contact"
-                className="w-full text-center py-3 rounded-xl bg-emerald-500 text-zinc-950 font-medium hover:bg-emerald-400 transition-colors"
-              >
-                Get in Touch
-              </Link>
-              <div className="flex justify-center gap-6 text-sm text-zinc-500 font-mono">
-                <a href="https://github.com/deepjpatel2007" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400">GH</a>
-                <span>•</span>
-                <a href="https://www.linkedin.com/in/deeppatel2007/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400">LI</a>
+                      <Link
+                        href={item.path}
+                        className={`block text-2xl font-semibold tracking-tight py-2 border-b border-zinc-900 ${
+                          isActive ? 'text-emerald-400' : 'text-zinc-500 hover:text-white'
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
               </div>
-            </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.25 }}
+                className="flex flex-col gap-4 mt-auto"
+              >
+                <Link
+                  href="/contact"
+                  className="w-full text-center py-3 rounded-xl bg-emerald-500 text-zinc-950 font-medium hover:bg-emerald-400 transition-colors"
+                >
+                  Get in Touch
+                </Link>
+                <div className="flex justify-center gap-6 text-sm text-zinc-500 font-mono">
+                  <a href="https://github.com/deepjpatel2007" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400">GH</a>
+                  <span>•</span>
+                  <a href="https://www.linkedin.com/in/deeppatel2007/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400">LI</a>
+                </div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

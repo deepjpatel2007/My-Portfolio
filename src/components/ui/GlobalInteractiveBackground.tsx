@@ -58,6 +58,26 @@ export const GlobalInteractiveBackground: React.FC = () => {
     let width = 0;
     let height = 0;
 
+    const dotSpacing = 42;
+    const interactionRadius = 200;
+    const maxDisplacement = 1.6;
+
+    // Cache static grid drawing
+    const drawStaticGrid = (w: number, h: number) => {
+      if (!ctx) return;
+      ctx.clearRect(0, 0, w, h);
+      ctx.fillStyle = 'rgba(120, 140, 145, 0.22)';
+      const cols = Math.ceil(w / dotSpacing) + 1;
+      const rows = Math.ceil(h / dotSpacing) + 1;
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          ctx.beginPath();
+          ctx.arc(i * dotSpacing, j * dotSpacing, 0.7, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    };
+
     // High-DPI canvas resizing
     const handleResize = () => {
       const parent = canvas.parentElement;
@@ -71,6 +91,11 @@ export const GlobalInteractiveBackground: React.FC = () => {
       
       ctx.resetTransform();
       ctx.scale(dpr, dpr);
+
+      // Instantly redraw static background on orientation changes or resize
+      if (isMobile || prefersReducedMotion) {
+        drawStaticGrid(width, height);
+      }
     };
 
     window.addEventListener('resize', handleResize);
@@ -91,21 +116,26 @@ export const GlobalInteractiveBackground: React.FC = () => {
       cursor.current.active = 1;
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
-
-    // Precise grid configuration
-    const dotSpacing = 42; // Spacing between 38px and 46px
-    const interactionRadius = 200; // Radius between 180px and 220px
-    const maxDisplacement = 1.6; // Subtle displacement between 1px and 2px
+    // Event listeners are only bound if mouse interactions are supported
+    if (!isMobile && !prefersReducedMotion) {
+      window.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseleave', handleMouseLeave);
+      document.addEventListener('mouseenter', handleMouseEnter);
+    }
 
     const render = () => {
       if (!ctx || !canvas) return;
 
-      // Pause drawing loop if page tab is invisible
+      // Skip updates when the tab is hidden
       if (document.hidden) {
         animationFrameId.current = requestAnimationFrame(render);
+        return;
+      }
+
+      // Draw static grid once and exit loop on mobile/reduced motion
+      if (isMobile || prefersReducedMotion) {
+        drawStaticGrid(width, height);
+        animationFrameId.current = null;
         return;
       }
 
@@ -118,7 +148,7 @@ export const GlobalInteractiveBackground: React.FC = () => {
 
       // Update cursor spotlight position and opacity directly in the DOM
       const spotlight = spotlightRef.current;
-      if (spotlight && !isMobile && !prefersReducedMotion) {
+      if (spotlight) {
         spotlight.style.transform = `translate3d(${currentX.current - 275}px, ${currentY.current - 275}px, 0)`;
         spotlight.style.opacity = spotlightOpacity.current.toFixed(3);
       }
@@ -129,19 +159,6 @@ export const GlobalInteractiveBackground: React.FC = () => {
       const cX = currentX.current;
       const cY = currentY.current;
       const cActive = cursor.current.active;
-
-      // Fallback: touch devices or reduced motion render a clean static dot grid
-      if (isMobile || prefersReducedMotion) {
-        ctx.fillStyle = 'rgba(120, 140, 145, 0.22)'; // default color and opacity
-        for (let i = 0; i < cols; i++) {
-          for (let j = 0; j < rows; j++) {
-            ctx.beginPath();
-            ctx.arc(i * dotSpacing, j * dotSpacing, 0.7, 0, Math.PI * 2); // 1.4px diameter
-            ctx.fill();
-          }
-        }
-        return;
-      }
 
       // Draw interactive dots
       for (let i = 0; i < cols; i++) {
@@ -155,8 +172,8 @@ export const GlobalInteractiveBackground: React.FC = () => {
 
           let renderX = origX;
           let renderY = origY;
-          let dotColor = 'rgba(120, 140, 145, 0.22)'; // default color and opacity
-          let dotSize = 0.7; // ~1.4px diameter
+          let dotColor = 'rgba(120, 140, 145, 0.22)';
+          let dotSize = 0.7;
 
           if (cActive > 0 && dist < interactionRadius) {
             const factor = 1 - dist / interactionRadius;
@@ -174,7 +191,7 @@ export const GlobalInteractiveBackground: React.FC = () => {
             const g = Math.round(140 + factor * (220 - 140));
             const b = Math.round(145 + factor * (165 - 145));
             dotColor = `rgba(${r}, ${g}, ${b}, ${opacity})`;
-            dotSize = 0.7 + factor * 0.1; // subtle size change
+            dotSize = 0.7 + factor * 0.1;
           }
 
           ctx.fillStyle = dotColor;
@@ -187,13 +204,34 @@ export const GlobalInteractiveBackground: React.FC = () => {
       animationFrameId.current = requestAnimationFrame(render);
     };
 
-    animationFrameId.current = requestAnimationFrame(render);
+    // visibility change observer to pause loop
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        if (animationFrameId.current) {
+          cancelAnimationFrame(animationFrameId.current);
+          animationFrameId.current = null;
+        }
+      } else {
+        if (!animationFrameId.current && !isMobile && !prefersReducedMotion) {
+          animationFrameId.current = requestAnimationFrame(render);
+        }
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    // Initial render
+    if (isMobile || prefersReducedMotion) {
+      drawStaticGrid(width, height);
+    } else {
+      animationFrameId.current = requestAnimationFrame(render);
+    }
 
     return () => {
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
