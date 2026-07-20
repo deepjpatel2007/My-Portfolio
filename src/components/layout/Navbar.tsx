@@ -324,10 +324,10 @@ export const Navbar: React.FC = () => {
                       <Link
                         href={item.path}
                         onClick={() => setIsOpen(false)}
-                        className={`group relative flex items-center justify-between w-full min-h-[56px] px-6 rounded-2xl border text-sm font-semibold tracking-wide transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 backdrop-blur-md select-none overflow-hidden active:scale-[0.98] ${
+                        className={`group relative flex items-center justify-start gap-3.5 w-full min-h-[56px] px-6 rounded-2xl border text-sm font-semibold tracking-wide transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/30 backdrop-blur-md select-none overflow-hidden active:scale-[0.98] ${
                           isActive
-                            ? 'bg-[rgba(16,185,129,0.18)] border-[rgba(0,220,165,0.45)] text-emerald-300 shadow-[inset_0_1px_2px_rgba(255,255,255,0.22),_0_0_15px_rgba(0,220,165,0.15)]'
-                            : 'bg-[rgba(18,24,26,0.48)] border-[rgba(255,255,255,0.12)] text-zinc-300 hover:text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] active:bg-[rgba(18,24,26,0.68)] active:border-[rgba(255,255,255,0.22)]'
+                            ? 'bg-[rgba(16,185,129,0.12)] border-[rgba(0,220,165,0.3)] text-emerald-300 shadow-[inset_0_1px_1.5px_rgba(255,255,255,0.15),_0_0_10px_rgba(16,185,129,0.08)]'
+                            : 'bg-[rgba(18,24,26,0.38)] border-[rgba(255,255,255,0.08)] text-zinc-400 hover:text-white shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] active:bg-[rgba(18,24,26,0.58)] active:border-[rgba(255,255,255,0.15)]'
                         }`}
                         style={{
                           backdropFilter: 'blur(16px)',
@@ -335,7 +335,7 @@ export const Navbar: React.FC = () => {
                         }}
                       >
                         {/* Top reflection highlight */}
-                        <div className={`absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/${isActive ? '25' : '12'} to-transparent pointer-events-none`} />
+                        <div className={`absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/${isActive ? '16' : '8'} to-transparent pointer-events-none`} />
 
                         {/* Glow indicator on active */}
                         {isActive && (
@@ -345,10 +345,6 @@ export const Navbar: React.FC = () => {
                         <span className="relative z-10 flex items-center gap-3">
                           {isActive && <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />}
                           {item.name}
-                        </span>
-
-                        <span className={`text-xs font-mono transition-transform duration-300 group-active:translate-x-1 ${isActive ? 'text-emerald-400' : 'text-zinc-600'}`}>
-                          0{idx + 1} →
                         </span>
                       </Link>
                     </motion.div>
