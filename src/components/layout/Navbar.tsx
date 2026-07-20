@@ -106,7 +106,7 @@ export const Navbar: React.FC = () => {
         }}
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2 group outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50 rounded-lg">
             <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-900 border border-zinc-800 transition-all duration-300 group-hover:border-emerald-500/50">
               <Cpu className="w-4 h-4 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
               <div className="absolute inset-0 rounded-lg bg-emerald-500/10 opacity-0 group-hover:opacity-100 blur transition-all duration-300" />
@@ -152,7 +152,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   key={item.path}
                   href={item.path}
-                  className="relative px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase transition-colors duration-200"
+                  className="relative px-4 py-1.5 rounded-full text-[11px] font-semibold tracking-wider uppercase transition-colors duration-200 outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/50"
                 >
                   {/* Active capsule styling: a smaller glass capsule floating inside main pill */}
                   {isActive && (

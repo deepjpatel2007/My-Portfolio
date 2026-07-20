@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Cpu, Terminal, Orbit } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
@@ -24,6 +24,116 @@ const staggerContainer = {
 };
 
 type FilterCategory = 'All' | 'Embedded' | 'Software' | 'Robotics';
+
+interface FilterButtonProps {
+  category: FilterCategory;
+  activeFilter: FilterCategory;
+  onClick: () => void;
+}
+
+const FilterButton: React.FC<FilterButtonProps> = ({ category, activeFilter, onClick }) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const reflectionRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  const coords = useRef({ targetX: 0, targetY: 0, currentX: 0, currentY: 0, opacity: 0, targetOpacity: 0 });
+
+  useEffect(() => {
+    setIsTouchDevice(window.matchMedia('(pointer: coarse)').matches);
+
+    const btn = buttonRef.current;
+    const refl = reflectionRef.current;
+    if (!btn || !refl) return;
+
+    let frameId: number;
+    const updateReflection = () => {
+      coords.current.currentX += (coords.current.targetX - coords.current.currentX) * 0.15;
+      coords.current.currentY += (coords.current.targetY - coords.current.currentY) * 0.15;
+      coords.current.opacity += (coords.current.targetOpacity - coords.current.opacity) * 0.15;
+
+      refl.style.setProperty('--glass-x', `${coords.current.currentX}px`);
+      refl.style.setProperty('--glass-y', `${coords.current.currentY}px`);
+      refl.style.opacity = coords.current.opacity.toFixed(3);
+
+      frameId = requestAnimationFrame(updateReflection);
+    };
+
+    frameId = requestAnimationFrame(updateReflection);
+    return () => cancelAnimationFrame(frameId);
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isTouchDevice) return;
+    const btn = buttonRef.current;
+    if (!btn) return;
+    const rect = btn.getBoundingClientRect();
+    coords.current.targetX = e.clientX - rect.left;
+    coords.current.targetY = e.clientY - rect.top;
+  };
+
+  const handleMouseEnter = () => {
+    if (isTouchDevice) return;
+    setIsHovered(true);
+    coords.current.targetOpacity = 0.7; // ~30% intensity reduction on spotlight hover opacity
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    coords.current.targetOpacity = 0;
+  };
+
+  const isActive = activeFilter === category;
+
+  // Reduced intensity styles compared to main CTA button:
+  // - Lighter/more transparent background opacity
+  // - 20px blur (instead of 28px)
+  // - Softer active glows and borders
+  const baseStyles = isActive
+    ? 'border-emerald-500/20 text-emerald-400 bg-emerald-500/[0.06] shadow-[0_4px_16px_rgba(0,0,0,0.45),_inset_0_1px_1px_rgba(255,255,255,0.12),_0_0_8px_rgba(16,185,129,0.08)]'
+    : 'border-white/5 bg-zinc-950/25 text-zinc-400 hover:text-zinc-200 hover:border-white/10 hover:bg-zinc-900/35 hover:shadow-[0_4px_16px_rgba(0,0,0,0.5),_inset_0_1px_1px_rgba(255,255,255,0.08)]';
+
+  return (
+    <button
+      ref={buttonRef}
+      onClick={onClick}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`relative px-4 py-1.5 rounded-full text-xs font-semibold font-mono transition-all duration-300 border cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/30 overflow-hidden backdrop-blur-md -webkit-backdrop-filter ${baseStyles}`}
+      style={{
+        backdropFilter: 'blur(20px) saturate(130%) brightness(105%)', // Softer backdrop filter variables
+        WebkitBackdropFilter: 'blur(20px) saturate(130%) brightness(105%)',
+      }}
+    >
+      {/* Top Edge Highlight */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+
+      {/* Active layout indicator */}
+      {isActive && (
+        <motion.span
+          layoutId="active-filter-indicator"
+          className="absolute inset-0 bg-emerald-500/[0.06] border border-emerald-500/15 rounded-full"
+          transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+        />
+      )}
+
+      {/* Reduced scale spotlight (80px circle vs 110px circle, 0.16 alpha vs 0.22) */}
+      {!isTouchDevice && (
+        <div
+          ref={reflectionRef}
+          className="absolute inset-0 pointer-events-none transition-opacity duration-300 opacity-0"
+          style={{
+            background: 'radial-gradient(80px circle at var(--glass-x, 0px) var(--glass-y, 0px), rgba(255, 255, 255, 0.16), transparent 80%)',
+            willChange: 'transform, opacity',
+          }}
+        />
+      )}
+
+      <span className="relative z-10">{category}</span>
+    </button>
+  );
+};
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<FilterCategory>('All');
@@ -78,24 +188,12 @@ export default function Projects() {
         className="flex flex-wrap items-center gap-2"
       >
         {(['All', 'Embedded', 'Software', 'Robotics'] as FilterCategory[]).map((category) => (
-          <button
+          <FilterButton
             key={category}
+            category={category}
+            activeFilter={activeFilter}
             onClick={() => setActiveFilter(category)}
-            className={`relative px-4 py-1.5 rounded-full text-xs font-semibold font-mono transition-colors duration-300 border cursor-pointer outline-none ${
-              activeFilter === category
-                ? 'border-emerald-500/20 text-emerald-400'
-                : 'border-white/5 bg-zinc-950/25 text-zinc-400 hover:text-white hover:border-white/12 backdrop-blur-md'
-            }`}
-          >
-            {activeFilter === category && (
-              <motion.span
-                layoutId="active-filter-indicator"
-                className="absolute inset-0 bg-emerald-500/[0.08] border border-emerald-500/20 rounded-full shadow-[inset_0_1px_2px_rgba(255,255,255,0.05),_0_0_8px_rgba(16,185,129,0.12)]"
-                transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-              />
-            )}
-            <span className="relative z-10">{category}</span>
-          </button>
+          />
         ))}
       </motion.div>
 

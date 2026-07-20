@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { RootProvider } from "@/components/layout/RootProvider";
 import "./globals.css";
@@ -14,6 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap"
 });
+
+export const viewport: Viewport = {
+  themeColor: "#030303",
+};
 
 export const metadata: Metadata = {
   title: "Deep Patel | Computer Engineering Student",
