@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
               className="flex items-center gap-2 hover:text-emerald-400 transition-colors"
             >
               <Phone className="w-4 h-4 text-emerald-500/80" />
-              +1 (365) - 773 - 4848
+              +1 (365) 773-4848
             </a>
             <a 
               href="https://github.com/deepjpatel2007" 

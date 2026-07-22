@@ -15,6 +15,7 @@ export const skillCategories: SkillCategory[] = [
     items: [
       { name: "C", level: "Firmware programming, microcontrollers, embedded hardware", icon: "Cpu" },
       { name: "C++", level: "Object-oriented software, hardware drivers, robot systems", icon: "Code" },
+      { name: "Python", level: "Script automation, data analysis, computer vision, and ML scripting", icon: "FileCode" },
       { name: "Java", level: "Application logic, OOP systems, data structures", icon: "Terminal" },
       { name: "SQL", level: "Relational database queries (PostgreSQL, Oracle, MySQL)", icon: "Database" },
       { name: "TypeScript", level: "Type-safe Next.js web application architecture", icon: "FileCode" },

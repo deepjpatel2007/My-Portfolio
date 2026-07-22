@@ -46,7 +46,7 @@ export default function ResumePage() {
         
         <div>
           <a
-            href="https://drive.google.com/file/d/1poFNNHG7VmEkmc9NtQYLENbPWlgP0kSE/view?usp=sharing"
+            href="https://drive.google.com/file/d/1G00hPfPIcn2LM42clnbnyFlajpp25BLk/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="outline-none"
@@ -87,7 +87,7 @@ export default function ResumePage() {
               </span>
               <span className="flex items-center gap-1.5">
                 <Phone className="w-3.5 h-3.5 text-emerald-500/80" />
-                +1 (365) - 773 - 4848
+                +1 (365) 773-4848
               </span>
               <a href="mailto:patel07@uoguelph.ca" className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
                 <Mail className="w-3.5 h-3.5 text-emerald-500/80" />
@@ -190,7 +190,7 @@ export default function ResumePage() {
               Engineering Project Experience
             </h3>
             <div className="flex flex-col gap-8">
-              {projects.map((proj) => (
+              {projects.filter(proj => !proj.title.includes("CampusBook")).map((proj) => (
                 <div key={proj.slug} className="flex flex-col gap-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 text-white text-sm">
                     <span className="font-bold">
