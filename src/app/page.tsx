@@ -6,7 +6,8 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { 
   ArrowRight, 
   FileText, 
-  ChevronDown 
+  ChevronDown,
+  Download
 } from 'lucide-react';
 import { Github, Linkedin } from '@/components/ui/BrandIcons';
 import { Card } from '@/components/ui/Card';
@@ -99,8 +100,7 @@ export default function Home() {
                 transition={{ delay: 0.3, duration: 0.8 }}
                 className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed font-light"
               >
-                I enjoy building software and embedded systems to solve engineering problems.
-                Currently studying at the <span className="text-white font-medium hover:text-emerald-400 transition-colors">University of Guelph</span>, my work bridges hardware-software integration, embedded systems, and full-stack development.
+                As a Computer Engineering student at the University of Guelph, I design and build software and embedded systems that combine hardware, automation, and modern web technologies to solve practical engineering problems.
               </motion.p>
 
               {/* Quick Actions */}
@@ -119,8 +119,20 @@ export default function Home() {
 
                 <a href="/Deep_Patel_Resume.pdf" download="Deep_Patel_Resume.pdf" className="outline-none">
                   <LiquidGlassButton variant="secondary" maxMovement={5}>
-                    <FileText className="w-4 h-4 text-emerald-400" />
+                    <Download className="w-4 h-4 text-emerald-400" />
                     Download Resume
+                  </LiquidGlassButton>
+                </a>
+
+                <a 
+                  href="https://drive.google.com/file/d/1G00hPfPIcn2LM42clnbnyFlajpp25BLk/view?usp=sharing" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="outline-none"
+                >
+                  <LiquidGlassButton variant="secondary" maxMovement={5}>
+                    <FileText className="w-4 h-4 text-zinc-400" />
+                    View Resume
                   </LiquidGlassButton>
                 </a>
 

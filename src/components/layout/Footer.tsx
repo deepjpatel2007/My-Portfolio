@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, FileText } from 'lucide-react';
 import { Github, Linkedin } from '@/components/ui/BrandIcons';
 import { LiquidGlassIconButton } from '../ui/LiquidGlassIconButton';
 
@@ -36,6 +36,13 @@ export const Footer: React.FC = () => {
             >
               <Phone className="w-4 h-4 text-emerald-500/80" />
               +1 (365) 773-4848
+            </a>
+            <a 
+              href="/resume" 
+              className="flex items-center gap-2 hover:text-emerald-400 transition-colors"
+            >
+              <FileText className="w-4 h-4 text-emerald-500/80" />
+              View & Download Resume
             </a>
             <a 
               href="https://github.com/deepjpatel2007" 
@@ -79,6 +86,13 @@ export const Footer: React.FC = () => {
               target="_self"
             >
               <Mail className="w-4 h-4" />
+            </LiquidGlassIconButton>
+            <LiquidGlassIconButton
+              href="/resume"
+              title="Resume"
+              target="_self"
+            >
+              <FileText className="w-4 h-4" />
             </LiquidGlassIconButton>
           </div>
         </div>

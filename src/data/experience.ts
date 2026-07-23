@@ -16,11 +16,11 @@ export const experiences: Experience[] = [
     location: "Kitchener, ON",
     period: "Jan 2026 – Present",
     description: [
-      "Supported testing and workflow optimization for an AI-powered internship platform using analytical troubleshooting and digital workflow coordination.",
-      "Applied troubleshooting, debugging, and analytical problem-solving skills to improve platform functionality, workflow efficiency, and overall user experience.",
-      "Collaborated with team members to support technical operations, ongoing platform development, and organization of digital workflows and documentation."
+      "Tested and validated workflow configurations for an AI-integrated platform to optimize usability and system performance.",
+      "Diagnosed and documented software errors in client flows, coordinating with developers to ensure quick resolution of issues.",
+      "Collaborated with project managers to refine internal data tracking pipelines and improve overall database entry speed."
     ],
-    techStack: ["AI Platforms", "Troubleshooting", "Workflow Coordination", "Quality Assurance", "System Debugging"]
+    techStack: ["Quality Assurance", "Technical Troubleshooting", "System Testing", "Data Workflows", "Debugging"]
   },
   {
     id: "canada-fire-chimney",
@@ -29,9 +29,9 @@ export const experiences: Experience[] = [
     location: "Kitchener, ON",
     period: "Jun 2025 – Apr 2026",
     description: [
-      "Conducted inspection, maintenance, and servicing of commercial fire protection and suppression systems in compliance with safety regulations.",
-      "Applied troubleshooting and analytical problem-solving skills to support repair and maintenance of mechanical and electrical fire safety equipment.",
-      "Collaborated with team members to complete technical service tasks, documentation, and installation projects efficiently and safely."
+      "Inspected and certified commercial fire suppression layouts in accordance with safety codes and safety standards.",
+      "Diagnosed mechanical and electrical faults in safety circuitry using multimeters and circuit diagrams to perform system repairs.",
+      "Authored technical service logs and safety reports, ensuring compliance documentation was completed on schedule."
     ],
     techStack: ["Compliance Inspections", "Mechanical Systems", "Electrical Diagnostics", "Safety Standards", "Troubleshooting"]
   },
@@ -42,10 +42,9 @@ export const experiences: Experience[] = [
     location: "Kitchener, ON",
     period: "Jun 2025 – Sept 2025",
     description: [
-      "Supported Arduino-based robotics workshops involving sensors, programming, and hardware integration activities.",
-      "Troubleshot hardware components and basic electrical systems to support engineering activities.",
-      "Communicated technical concepts and problem-solving strategies through hands-on learning environments.",
-      "Collaborated with team members to organize workshop activities and maintain structured learning sessions."
+      "Instructed student groups on Arduino microcontroller setups, including sensor integration and basic PWM motor controls.",
+      "Troubleshot hardware interfacing issues and UART/I2C communication signals during team build workshops.",
+      "Mentored workshop groups on applying the engineering design process to build, test, and optimize tracked robot chassis."
     ],
     techStack: ["Arduino Systems", "STEM Mentorship", "Robotics Interfacing", "Electrical Circuits", "Problem Solving"]
   }

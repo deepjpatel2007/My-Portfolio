@@ -60,19 +60,16 @@ export default function About() {
         {/* Left Side: Long-form bio */}
         <motion.div variants={fadeInUp} className="md:col-span-2 flex flex-col gap-6 text-zinc-400 text-sm md:text-base font-light leading-relaxed">
           <p>
-            Hi, I'm <strong className="text-white font-medium">Deep Patel</strong>, a Computer Engineering student at the <strong className="text-white font-medium">University of Guelph</strong> focused on engineering software and embedded systems that solve practical problems.
+            I am a Computer Engineering student at the <strong className="text-white font-medium">University of Guelph</strong>. I focus on bridging hardware and software, designing applications and embedded systems that work reliably and solve practical engineering problems.
           </p>
           <p>
-            I enjoy building projects that combine hardware and software, from Arduino-based autonomous systems to full-stack web applications. Through my coursework, engineering design projects, competitions, and personal development, I've gained experience developing solutions using <strong className="text-emerald-400 font-medium">C/C++, Java, JavaScript, React, TypeScript, SQL, and Arduino</strong> while strengthening my skills in software development, system design, debugging, and problem-solving.
+            My path into engineering began with a curiosity about how devices function behind their enclosures. Prototyping simple circuits and writing my first scripts to blink LEDs opened up a world of hardware-software integration. That curiosity evolved into a formal study of computer engineering, learning how low-level drivers, data structures, and algorithms work together.
           </p>
           <p>
-            My interests span software engineering, embedded systems, automation, robotics, and artificial intelligence. I enjoy taking an idea from concept to implementation, whether that involves programming microcontrollers, designing application logic, integrating sensors, or creating intuitive user interfaces. I believe the most rewarding engineering projects are those that have a practical impact and improve the way people interact with technology.
+            Today, I enjoy building modular software systems and interactive robotics projects. Whether I am writing non-blocking microcontroller firmware in C/C++, building object-oriented applications in Java, or developing responsive full-stack interfaces with React and TypeScript, I emphasize clean architecture, thorough debugging, and system optimization.
           </p>
           <p>
-            Outside the classroom, I continuously expand my technical skills by building personal projects, participating in engineering competitions, contributing to GitHub, and exploring new technologies. I enjoy learning modern development practices and challenging myself with increasingly complex projects that strengthen both my software and hardware engineering abilities.
-          </p>
-          <p>
-            I am currently seeking internship opportunities in <strong className="text-emerald-400 font-medium">Software Engineering, Embedded Systems, Automation, and Full-Stack Development</strong>, where I can contribute to meaningful projects, collaborate with experienced engineers, and continue growing as a developer.
+            I am currently seeking <strong className="text-emerald-400 font-medium">Software Engineering, Embedded Systems, and Automation</strong> internship opportunities. I am eager to apply my technical skills to production codebases, collaborate with multidisciplinary engineering teams, and contribute to building systems at scale.
           </p>
         </motion.div>
 

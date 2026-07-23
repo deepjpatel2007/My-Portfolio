@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Download, MapPin, Mail, Phone, Cpu, BookOpen, Briefcase, Code, Award, Users } from 'lucide-react';
+import { Download, FileText, MapPin, Mail, Phone, Cpu, BookOpen, Briefcase, Code, Award, Users } from 'lucide-react';
 import { Github, Linkedin } from '@/components/ui/BrandIcons';
 import { Card } from '@/components/ui/Card';
 import { experiences } from '@/data/experience';
@@ -44,7 +44,7 @@ export default function ResumePage() {
           <h1 className="text-3xl font-extrabold text-white tracking-tight">Interactive Resume</h1>
         </div>
         
-        <div>
+        <div className="flex flex-wrap items-center gap-3">
           <a
             href="/Deep_Patel_Resume.pdf"
             download="Deep_Patel_Resume.pdf"
@@ -52,7 +52,19 @@ export default function ResumePage() {
           >
             <LiquidGlassButton variant="primary">
               <Download className="w-4 h-4" />
-              Download PDF Resume
+              Download Resume
+            </LiquidGlassButton>
+          </a>
+
+          <a
+            href="https://drive.google.com/file/d/1G00hPfPIcn2LM42clnbnyFlajpp25BLk/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="outline-none"
+          >
+            <LiquidGlassButton variant="secondary">
+              <FileText className="w-4 h-4 text-emerald-400" />
+              View Resume
             </LiquidGlassButton>
           </a>
         </div>

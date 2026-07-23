@@ -14,7 +14,7 @@ export const awards: Award[] = [
     title: "Dean's Honours List Recipient",
     issuer: "University of Guelph",
     date: "Fall 2025 & Winter 2026",
-    description: "Maintained a perfect academic standing (GPA 4.0/4.0) during consecutive semesters of the Computer Engineering degree program.",
+    description: "Maintained perfect academic standing (GPA 4.0/4.0) during consecutive semesters of the Computer Engineering degree program.",
     category: "honour",
     credentials: [
       { label: "VIEW FALL 2025", url: "https://drive.google.com/file/d/1ar6jYh7LDpUH7YOvJCgDXIntAQkPW0rk/view?usp=sharing" },
@@ -25,14 +25,14 @@ export const awards: Award[] = [
     title: "1st Place — Guelph Engineering Competition",
     issuer: "University of Guelph",
     date: "Jan 2026",
-    description: "Awarded 1st Place at the University of Guelph Engineering Competition for developing an optimized engineering solution under real-world design constraints. Qualified to represent the university at the Ontario Engineering Competition (OEC).",
+    description: "Awarded First Place at the University of Guelph Engineering Competition after developing an engineering solution under competitive design constraints. Qualified to represent the university at the Ontario Engineering Competition (OEC).",
     category: "honour"
   },
   {
     title: "2nd Place & Fastest Vehicle Award — Assistive Mobility Device Engineering Project",
     issuer: "University of Guelph",
     date: "Oct 2025",
-    description: "Designed and built an Arduino-powered assistive mobility device, contributing to embedded programming, hardware integration, and iterative engineering design. Awarded Fastest Vehicle and 2nd Place Overall for performance, stability, and innovation.",
+    description: "Awarded Second Place and the Fastest Vehicle Award overall after designing and prototyping a motorized mobile attachment featuring tilt safety checks and obstacle warning triggers.",
     category: "honour"
   },
   // Professional Certifications
@@ -40,7 +40,7 @@ export const awards: Award[] = [
     title: "Google AI Essentials Professional Certificate",
     issuer: "Google",
     date: "Completed Jun 2026",
-    description: "Gained core fundamentals in generative AI prompt engineering, AI use cases, and leveraging AI tools to increase productivity and workflow optimization.",
+    description: "Gained core fundamentals in generative AI prompt engineering, project use cases, and workflow optimizations.",
     credentialUrl: "https://drive.google.com/file/d/14ialqZBJ1MJAwec8Xn4pNGPDpO9q4qji/view?usp=sharing",
     category: "certification"
   },
@@ -48,7 +48,7 @@ export const awards: Award[] = [
     title: "Cybersecurity Fundamentals",
     issuer: "IBM SkillsBuild",
     date: "Completed Jun 2026",
-    description: "Mastered fundamental security concepts, cryptography, access management models, endpoint security, and compliance principles.",
+    description: "Mastered fundamental security concepts, cryptographic basics, identity access management models, and compliance principles.",
     credentialUrl: "https://drive.google.com/file/d/1zgSRlALdgGpzLyMRyO8FC1yVX1sk04dk/view?usp=sharing",
     category: "certification"
   },
@@ -56,7 +56,7 @@ export const awards: Award[] = [
     title: "SQL (Intermediate) Certification",
     issuer: "HackerRank",
     date: "Completed May 2026",
-    description: "Certified proficiency in intermediate relational database concepts, including advanced joins, subqueries, unions, and aggregate logic.",
+    description: "Certified proficiency in relational database operations, including subqueries, table joins, unions, and aggregate logic.",
     credentialUrl: "https://drive.google.com/file/d/1mbJ9tOybfP5hjBK216agIToHGwOxORLU/view?usp=sharing",
     category: "certification"
   },
@@ -64,7 +64,7 @@ export const awards: Award[] = [
     title: "Cloud Computing Fundamentals Credential",
     issuer: "IBM SkillsBuild",
     date: "Completed May 2026",
-    description: "Mastered fundamental cloud models (IaaS, PaaS, SaaS), cloud architectures, deployment strategies, and virtualization technologies.",
+    description: "Mastered fundamental cloud models (IaaS, PaaS, SaaS), cloud architectures, deployment systems, and virtualization setups.",
     credentialUrl: "https://drive.google.com/file/d/10sbGmjadVj7-akjmXYwWlAJXaMvMPRs0/view?usp=sharing",
     category: "certification"
   }
