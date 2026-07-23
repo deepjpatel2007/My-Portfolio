@@ -125,7 +125,7 @@ export default function Home() {
                 </a>
 
                 <a 
-                  href="https://drive.google.com/file/d/1G00hPfPIcn2LM42clnbnyFlajpp25BLk/view?usp=sharing" 
+                  href="https://drive.google.com/file/d/1FyJ-L8szpSd4iyib2nGLU9SALGVsuPBc/view?usp=sharing" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="outline-none"

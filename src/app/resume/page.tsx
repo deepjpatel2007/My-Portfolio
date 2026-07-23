@@ -35,7 +35,7 @@ export default function ResumePage() {
       title: "Autonomous Robotics and Navigation System Project",
       context: "Personal Project",
       location: "Kitchener, ON",
-      period: "May 2026 – Present",
+      period: "May 2026 – Jun 2026",
       githubUrl: "https://github.com/deepjpatel2007/-autonomous-vehicle-mapping-and-telemetry-system",
       bullets: [
         "Engineered an Arduino-based autonomous robotic vehicle using C++ with real-time obstacle detection and navigation.",
@@ -88,7 +88,7 @@ export default function ResumePage() {
           </a>
 
           <a
-            href="https://drive.google.com/file/d/1G00hPfPIcn2LM42clnbnyFlajpp25BLk/view?usp=sharing"
+            href="https://drive.google.com/file/d/1FyJ-L8szpSd4iyib2nGLU9SALGVsuPBc/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="outline-none"

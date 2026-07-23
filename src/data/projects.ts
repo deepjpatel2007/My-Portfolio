@@ -80,7 +80,7 @@ export const projects: Project[] = [
     title: "FinLit: Personal Financial Coach",
     description: "A responsive web platform built to teach budgeting and compounding interest to young adults. Implements dynamic Chart.js visualizations, financial calculator models, and localStorage state persistence to deliver an interactive credit and budget simulation.",
     category: "Software",
-    techStack: ["JavaScript", "HTML5/CSS3", "Chart.js", "Web Storage API", "Gamification Engine"],
+    techStack: ["JavaScript", "HTML5/CSS3", "Chart.js", "Web Storage API"],
     problem: "Basic financial literacy (saving, interest, credit, budgeting) is often not taught in schools, leading to early financial mistakes. Traditional finance tools are too clinical and lack educational engagement for younger audiences.",
     objective: "To create an interactive, responsive web application that gamifies money concepts, allowing users to build virtual budgets, manage credit simulations, and test their financial knowledge in real-time.",
     process: [

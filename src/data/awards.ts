@@ -24,14 +24,14 @@ export const awards: Award[] = [
   {
     title: "1st Place — Guelph Engineering Competition",
     issuer: "University of Guelph",
-    date: "October 2025",
-    description: "Awarded First Place at the University of Guelph Engineering Competition after developing an engineering solution under competitive design constraints. Qualified to represent the University of Guelph at the Ontario Engineering Competition (OEC) in January 2026.",
+    date: "Oct 2025",
+    description: "Awarded First Place at the University of Guelph Engineering Competition in Oct 2025 after developing an engineering solution under competitive design constraints. Qualified to represent the University of Guelph at the Ontario Engineering Competition (OEC) in January 2026.",
     category: "honour"
   },
   {
     title: "2nd Place & Fastest Vehicle Award — Assistive Mobility Device Engineering Project",
     issuer: "University of Guelph",
-    date: "October 2025",
+    date: "Oct 2025",
     description: "Awarded Second Place and the Fastest Vehicle Award overall after designing and prototyping a motorized mobile attachment featuring tilt safety checks and obstacle warning triggers.",
     category: "honour"
   },

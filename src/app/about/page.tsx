@@ -45,7 +45,7 @@ export default function About() {
           variants={fadeInUp}
           className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed"
         >
-          Bridging the physical and digital worlds through embedded systems programming and software engineering.
+          Building practical solutions by combining embedded systems and software engineering.
         </motion.p>
       </motion.div>
 

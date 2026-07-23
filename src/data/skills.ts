@@ -14,6 +14,7 @@ export const skillCategories: SkillCategory[] = [
       { name: "C" },
       { name: "C++" },
       { name: "Java" },
+      { name: "Python" },
       { name: "SQL (PostgreSQL, Oracle, MySQL)" },
       { name: "Object-Oriented Programming (OOP)" }
     ]
