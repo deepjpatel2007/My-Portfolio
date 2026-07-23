@@ -46,9 +46,8 @@ export default function ResumePage() {
         
         <div>
           <a
-            href="https://drive.google.com/file/d/1G00hPfPIcn2LM42clnbnyFlajpp25BLk/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/Deep_Patel_Resume.pdf"
+            download="Deep_Patel_Resume.pdf"
             className="outline-none"
           >
             <LiquidGlassButton variant="primary">

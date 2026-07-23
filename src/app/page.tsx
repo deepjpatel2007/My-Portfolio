@@ -99,8 +99,8 @@ export default function Home() {
                 transition={{ delay: 0.3, duration: 0.8 }}
                 className="text-base sm:text-lg md:text-xl text-zinc-400 max-w-2xl leading-relaxed font-light"
               >
-                I enjoy building software and embedded systems that solve real-world problems.
-                Currently studying at the <span className="text-white font-medium hover:text-emerald-400 transition-colors">University of Guelph</span>, my work bridges register-level firmware programming and dynamic web applications.
+                I enjoy building software and embedded systems to solve engineering problems.
+                Currently studying at the <span className="text-white font-medium hover:text-emerald-400 transition-colors">University of Guelph</span>, my work bridges hardware-software integration, embedded systems, and full-stack development.
               </motion.p>
 
               {/* Quick Actions */}
@@ -117,12 +117,12 @@ export default function Home() {
                   </LiquidGlassButton>
                 </Link>
 
-                <Link href="/resume" className="outline-none">
+                <a href="/Deep_Patel_Resume.pdf" download="Deep_Patel_Resume.pdf" className="outline-none">
                   <LiquidGlassButton variant="secondary" maxMovement={5}>
                     <FileText className="w-4 h-4 text-emerald-400" />
                     Download Resume
                   </LiquidGlassButton>
-                </Link>
+                </a>
 
                 <div className="flex items-center gap-2.5 ml-2 sm:ml-4 border-l border-zinc-900 pl-4 sm:pl-6 py-1.5">
                   <LiquidGlassIconButton 

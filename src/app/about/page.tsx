@@ -45,7 +45,7 @@ export default function About() {
           variants={fadeInUp}
           className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed"
         >
-          Bridging the physical and digital worlds through low-level firmware engineering and modern software applications.
+          Bridging the physical and digital worlds through embedded systems programming and software engineering.
         </motion.p>
       </motion.div>
 
@@ -60,7 +60,7 @@ export default function About() {
         {/* Left Side: Long-form bio */}
         <motion.div variants={fadeInUp} className="md:col-span-2 flex flex-col gap-6 text-zinc-400 text-sm md:text-base font-light leading-relaxed">
           <p>
-            Hi, I'm <strong className="text-white font-medium">Deep Patel</strong>, a Computer Engineering student at the <strong className="text-white font-medium">University of Guelph</strong> with a passion for designing software and embedded systems that solve real-world problems.
+            Hi, I'm <strong className="text-white font-medium">Deep Patel</strong>, a Computer Engineering student at the <strong className="text-white font-medium">University of Guelph</strong> focused on engineering software and embedded systems that solve practical problems.
           </p>
           <p>
             I enjoy building projects that combine hardware and software, from Arduino-based autonomous systems to full-stack web applications. Through my coursework, engineering design projects, competitions, and personal development, I've gained experience developing solutions using <strong className="text-emerald-400 font-medium">C/C++, Java, JavaScript, React, TypeScript, SQL, and Arduino</strong> while strengthening my skills in software development, system design, debugging, and problem-solving.
@@ -110,7 +110,7 @@ export default function About() {
                 <div>
                   <h3 className="text-sm font-semibold text-white">Academic Highlights</h3>
                   <p className="text-xs text-zinc-500 font-mono">GPA: 4.0/4.0</p>
-                  <p className="text-xs text-zinc-500 font-mono">Dean's Honours List Recipient</p>
+                  <p className="text-xs text-zinc-500 font-mono">Dean's Honours List Recipient – Fall 2025 and Winter 2026</p>
                 </div>
               </div>
             </div>
@@ -118,7 +118,7 @@ export default function About() {
             <div className="border-t border-zinc-900 pt-4 flex flex-col gap-2">
               <span className="text-[10px] font-mono text-zinc-500 uppercase">Core Focus Areas:</span>
               <div className="flex flex-wrap gap-1.5 mt-1">
-                {["Embedded C/C++", "RTOS Architecture", "PCB Route & Schematics", "Robotics (SLAM)", "Full-Stack Web", "CAN Bus / Telemetry"].map(tag => (
+                {["Embedded C/C++", "Software Engineering", "Hardware-Software Integration", "Robotics & Automation", "Full-Stack Web", "Circuit Prototyping"].map(tag => (
                   <span key={tag} className="px-2 py-0.5 rounded text-[10px] font-mono bg-zinc-900 border border-zinc-800 text-zinc-400">
                     {tag}
                   </span>
