@@ -27,8 +27,8 @@ const staggerContainer = {
 };
 
 export default function ResumePage() {
-  const workExperiences = experiences.filter(exp => !exp.role.includes("Volunteer"));
-  const volunteerExperiences = experiences.filter(exp => exp.role.includes("Volunteer"));
+  const workExperiences = experiences.filter(exp => exp.classification !== "Volunteer Experience");
+  const volunteerExperiences = experiences.filter(exp => exp.classification === "Volunteer Experience");
 
   const resumeProjects = [
     {
