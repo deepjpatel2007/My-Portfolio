@@ -80,49 +80,6 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function SkillsPage() {
-  const resumeSkills = [
-    {
-      title: "Programming Languages",
-      icon: <Code className="w-5 h-5 text-emerald-400" />,
-      description: "Proficient in C, C++, Python, Java, SQL (PostgreSQL, Oracle, MySQL), with experience in Object-Oriented Programming (OOP), data structures, algorithms, and software development principles."
-    },
-    {
-      title: "Web Development",
-      icon: <Globe className="w-5 h-5 text-emerald-400" />,
-      description: "Experience building modern web applications using HTML, CSS, JavaScript, TypeScript, React, Next.js, Tailwind CSS, and responsive design principles."
-    },
-    {
-      title: "Embedded Systems & Hardware",
-      icon: <Cpu className="w-5 h-5 text-emerald-400" />,
-      description: "Experience developing Arduino-based embedded systems, integrating microcontrollers, sensors, actuators, serial communication, hardware-software integration, debugging, testing, control systems, and prototype development."
-    },
-    {
-      title: "Engineering & Design Software",
-      icon: <Layers className="w-5 h-5 text-emerald-400" />,
-      description: "Proficient with SolidWorks, AutoCAD, MATLAB, Microsoft Excel, Word, PowerPoint, Microsoft 365, and engineering design workflows including CAD modeling and technical documentation."
-    },
-    {
-      title: "Development Tools",
-      icon: <Terminal className="w-5 h-5 text-emerald-400" />,
-      description: "Experienced using Git, GitHub, Visual Studio Code, Eclipse, IntelliJ IDEA, and collaborative software development workflows."
-    },
-    {
-      title: "Computer Vision & AI",
-      icon: <Eye className="w-5 h-5 text-emerald-400" />,
-      description: "Experience with OpenCV, image processing fundamentals, computer vision concepts, and integrating vision-based functionality into engineering projects."
-    },
-    {
-      title: "Data & Analytics",
-      icon: <Database className="w-5 h-5 text-emerald-400" />,
-      description: "Experience using Power BI, Tableau, Excel, and SQL for data analysis, visualization, reporting, and decision support."
-    },
-    {
-      title: "Professional Skills",
-      icon: <Sparkles className="w-5 h-5 text-emerald-400" />,
-      description: "Strong analytical and problem-solving abilities, effective written and verbal communication, teamwork, adaptability, leadership, technical documentation, and a proactive approach to learning and engineering challenges."
-    }
-  ];
-
   return (
     <div className="w-full max-w-4xl mx-auto px-6 flex flex-col gap-12">
       
@@ -146,7 +103,7 @@ export default function SkillsPage() {
           variants={fadeInUp}
           className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed"
         >
-          A resume-style summary of my engineering tools, programming languages, and professional skills.
+          A categorized inventory of my technical skills, tools, and methodologies.
         </motion.p>
       </motion.div>
 
@@ -155,32 +112,28 @@ export default function SkillsPage() {
         layout
         className="flex flex-col gap-6"
       >
-        <AnimatePresence mode="popLayout">
-          {resumeSkills.map((cat, idx) => (
-            <motion.div 
-              layout
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.25, delay: idx * 0.03 }}
-              key={cat.title}
-            >
-              <Card className="p-6 md:p-8 flex items-start gap-5">
-                <div className="w-10 h-10 rounded-xl bg-zinc-950 border border-zinc-900 flex items-center justify-center shrink-0 mt-0.5">
-                  {cat.icon}
-                </div>
-                <div className="flex flex-col gap-2.5">
-                  <h2 className="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase border-l-2 border-emerald-500 pl-3 animate-pulse-subtle">
+        <Card className="p-6 md:p-8 flex flex-col gap-6">
+          <div className="flex flex-col gap-6 divide-y divide-zinc-900/60">
+            {skillCategories.map((cat, idx) => (
+              <div 
+                key={cat.title} 
+                className={`grid grid-cols-1 md:grid-cols-4 gap-2 md:gap-6 items-baseline ${idx > 0 ? 'pt-6' : ''}`}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-zinc-950 border border-zinc-900 flex items-center justify-center shrink-0">
+                    {iconMap[cat.items[0]?.icon] || <Code className="w-4 h-4 text-emerald-400" />}
+                  </div>
+                  <h2 className="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase">
                     {cat.title}
                   </h2>
-                  <p className="text-zinc-300 text-sm font-light leading-relaxed">
-                    {cat.description}
-                  </p>
                 </div>
-              </Card>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+                <p className="text-zinc-300 text-sm md:text-base font-light leading-relaxed md:col-span-3">
+                  {cat.items.map(i => i.name).join(', ')}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Card>
       </motion.div>
 
     </div>

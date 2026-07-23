@@ -1,7 +1,7 @@
 export interface SkillItem {
   name: string;
-  level: string; // Concise level/context description
-  icon: string;  // Lucide icon mapping identifier
+  level: string;
+  icon: string;
 }
 
 export interface SkillCategory {
@@ -11,79 +11,66 @@ export interface SkillCategory {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Programming",
+    title: "Programming Languages",
     items: [
-      { name: "C", level: "Embedded firmware development and hardware configurations", icon: "Cpu" },
-      { name: "C++", level: "Object-oriented software and hardware interfaces", icon: "Code" },
-      { name: "Java", level: "Data structures, OOP applications, and testing structures", icon: "Terminal" },
-      { name: "Python", level: "Script automation, utility tools, and data modeling", icon: "FileCode" },
-      { name: "JavaScript / TypeScript", level: "Interactive web logic and type-safe frontends", icon: "FileJson" }
+      { name: "C", level: "Proficient", icon: "Code" },
+      { name: "C++", level: "Proficient", icon: "Code" },
+      { name: "Python", level: "Proficient", icon: "Code" },
+      { name: "Java", level: "Proficient", icon: "Code" },
+      { name: "SQL (PostgreSQL, Oracle, MySQL)", level: "Proficient", icon: "Code" },
+      { name: "Object-Oriented Programming (OOP)", level: "Proficient", icon: "Code" }
     ]
   },
   {
-    title: "Embedded Systems",
+    title: "Development Tools",
     items: [
-      { name: "Microcontrollers", level: "Interfacing and configuring boards like Arduino Uno", icon: "Cpu" },
-      { name: "Sensors & Actuators", level: "Integrating ultrasonic sensors, IMUs, haptic buzzers, and servos", icon: "Activity" },
-      { name: "Serial Protocols", level: "Data exchanges using UART, I2C, and SPI basics", icon: "Cable" },
-      { name: "Hardware Integration", level: "Breadboard prototyping, electrical connections, and power management", icon: "Layers" }
+      { name: "Git/GitHub", level: "Experienced", icon: "Terminal" },
+      { name: "Visual Studio Code", level: "Experienced", icon: "Terminal" },
+      { name: "Eclipse", level: "Experienced", icon: "Terminal" },
+      { name: "IntelliJ IDEA", level: "Experienced", icon: "Terminal" }
     ]
   },
   {
-    title: "Software Development",
+    title: "Engineering & Design Software",
     items: [
-      { name: "System Design", level: "Modular programming, division of concerns, and clean interface systems", icon: "Layers" },
-      { name: "Design Patterns", level: "Implementing Singleton and Factory classes in OOP codebases", icon: "Code" },
-      { name: "Debugging & Testing", level: "Logical troubleshooting, print statement tracing, and code analysis", icon: "Search" }
+      { name: "SolidWorks", level: "Proficient", icon: "Layers" },
+      { name: "AutoCAD", level: "Proficient", icon: "Layers" },
+      { name: "Microsoft Excel", level: "Proficient", icon: "Layers" },
+      { name: "Microsoft Word", level: "Proficient", icon: "Layers" },
+      { name: "Microsoft PowerPoint", level: "Proficient", icon: "Layers" },
+      { name: "Microsoft 365", level: "Proficient", icon: "Layers" }
     ]
   },
   {
-    title: "Web Technologies",
+    title: "Technical Skills",
     items: [
-      { name: "React & Next.js", level: "Component layouts, states, hooks, and responsive design integrations", icon: "FileCode" },
-      { name: "HTML5 & CSS3", level: "Document structures, typography hierarchies, and layout styling", icon: "Globe" },
-      { name: "Web APIs", level: "Local browser storage state setups and dynamic DOM structures", icon: "Network" }
+      { name: "Arduino systems", level: "Experienced", icon: "Cpu" },
+      { name: "Embedded Programming", level: "Experienced", icon: "Cpu" },
+      { name: "Hardware Integration", level: "Experienced", icon: "Cpu" },
+      { name: "Sensor Integration", level: "Experienced", icon: "Cpu" },
+      { name: "Debugging", level: "Experienced", icon: "Cpu" },
+      { name: "Testing", level: "Experienced", icon: "Cpu" },
+      { name: "Data Analysis", level: "Experienced", icon: "Cpu" },
+      { name: "Control Systems", level: "Experienced", icon: "Cpu" },
+      { name: "CAD Modeling", level: "Experienced", icon: "Cpu" }
     ]
   },
   {
-    title: "Engineering Tools",
+    title: "Computer Vision",
     items: [
-      { name: "MATLAB", level: "Mathematical models, engineering calculations, and script setups", icon: "Activity" },
-      { name: "IDE Environments", level: "Coding inside VS Code, IntelliJ IDEA, and Eclipse IDE", icon: "Terminal" }
+      { name: "OpenCV", level: "Experienced", icon: "Eye" }
     ]
   },
   {
-    title: "CAD",
+    title: "Professional Skills",
     items: [
-      { name: "SolidWorks", level: "3D mechanical parts, robot chassis designs, and assembly layouts", icon: "Layers" },
-      { name: "AutoCAD", level: "2D drafting, basic wiring diagrams, and layout plans", icon: "FileText" }
-    ]
-  },
-  {
-    title: "Automation",
-    items: [
-      { name: "Feedback Control", level: "Applying running median filter algorithms and complementary filters", icon: "Orbit" },
-      { name: "Sensor Triggers", level: "Defining threshold checks for obstacle avoidance safety states", icon: "Activity" }
-    ]
-  },
-  {
-    title: "Data",
-    items: [
-      { name: "SQL", level: "Relational database queries, table queries, and basic joins", icon: "Database" },
-      { name: "Data Structures", level: "Utilizing arrays, hash maps, structures, and list models in Java/C++", icon: "Table" }
-    ]
-  },
-  {
-    title: "Operating Systems",
-    items: [
-      { name: "Windows", level: "Primary desktop platform for compilation setups, IDEs, and documentation", icon: "Terminal" },
-      { name: "Linux", level: "Running Raspberry Pi systems, terminal tasks, and CLI utilities", icon: "Cpu" }
-    ]
-  },
-  {
-    title: "Version Control",
-    items: [
-      { name: "Git & GitHub", level: "Managing files, commits, branch operations, and pushing source changes", icon: "Github" }
+      { name: "Strong analytical and problem-solving abilities", level: "Core", icon: "Sparkles" },
+      { name: "effective written and verbal communication", level: "Core", icon: "Sparkles" },
+      { name: "teamwork", level: "Core", icon: "Sparkles" },
+      { name: "adaptability", level: "Core", icon: "Sparkles" },
+      { name: "leadership", level: "Core", icon: "Sparkles" },
+      { name: "technical documentation", level: "Core", icon: "Sparkles" },
+      { name: "and a proactive attitude", level: "Core", icon: "Sparkles" }
     ]
   }
 ];
