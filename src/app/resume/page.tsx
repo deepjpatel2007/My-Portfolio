@@ -30,6 +30,37 @@ export default function ResumePage() {
   const workExperiences = experiences.filter(exp => !exp.role.includes("Volunteer"));
   const volunteerExperiences = experiences.filter(exp => exp.role.includes("Volunteer"));
 
+  const resumeProjects = [
+    {
+      title: "Autonomous Robotics and Navigation System Project",
+      context: "Personal Project",
+      location: "Kitchener, ON",
+      period: "May 2026 – Present",
+      githubUrl: "https://github.com/deepjpatel2007/-autonomous-vehicle-mapping-and-telemetry-system",
+      bullets: [
+        "Engineered an Arduino-based autonomous robotic vehicle using C++ with real-time obstacle detection and navigation.",
+        "Integrated ultrasonic sensors, servo motors, and motor drivers to enable autonomous movement and environmental scanning.",
+        "Developed obstacle avoidance algorithms that processed live sensor data to support real-time navigation decisions.",
+        "Implemented Bluetooth manual override alongside autonomous control through a modular system architecture.",
+        "Tested, debugged, and optimized sensor calibration and motor control to improve navigation accuracy and system reliability."
+      ]
+    },
+    {
+      title: "Assistive Mobility Device Engineering Project",
+      context: "University of Guelph",
+      location: "Guelph, ON",
+      period: "Sept 2025 – Oct 2025",
+      githubUrl: "https://github.com/deepjpatel2007/Assistive-Mobility-Device-Project",
+      bullets: [
+        "Designed and developed an assistive mobility device prototype using Arduino-controlled servo systems and embedded C++.",
+        "Engineered and optimized the chassis using CAD to improve stability, maneuverability, and structural performance.",
+        "Integrated mechanical, electrical, and embedded system components into a reliable and fully functional prototype.",
+        "Conducted iterative testing, debugging, and design optimization to improve steering precision and system reliability.",
+        "Achieved 2nd Place by collaborating with a multidisciplinary engineering team to deliver a high-performing prototype."
+      ]
+    }
+  ];
+
   return (
     <div className="w-full max-w-4xl mx-auto px-6 flex flex-col gap-10">
       
@@ -193,7 +224,6 @@ export default function ResumePage() {
           </Card>
         </motion.div>
 
-        {/* 4. ENGINEERING PROJECT EXPERIENCE */}
         <motion.div variants={fadeInUp}>
           <Card className="p-6 md:p-8 flex flex-col gap-6 border border-zinc-900 bg-zinc-950/20">
             <h3 className="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase border-b border-zinc-900/60 pb-2 flex items-center gap-2">
@@ -201,17 +231,17 @@ export default function ResumePage() {
               Engineering Project Experience
             </h3>
             <div className="flex flex-col gap-8">
-              {projects.filter(proj => !proj.title.includes("CampusBook")).map((proj) => (
-                <div key={proj.slug} className="flex flex-col gap-3">
+              {resumeProjects.map((proj) => (
+                <div key={proj.title} className="flex flex-col gap-3">
                   <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-1 text-white text-sm">
                     <span className="font-bold">
-                      {proj.title}
+                      {proj.title} <span className="font-normal text-zinc-500">|</span> <span className="italic text-emerald-400 font-normal">{proj.context}</span>
                     </span>
-                    <span className="text-xs font-mono text-zinc-500 shrink-0">Sept 2025 – Present</span>
+                    <span className="text-xs font-mono text-zinc-500 shrink-0">{proj.period}</span>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wide">
-                      {proj.category} Project
+                      {proj.location}
                     </span>
                     <a 
                       href={proj.githubUrl} 
@@ -222,15 +252,11 @@ export default function ResumePage() {
                       View Repository ↗
                     </a>
                   </div>
-                  <p className="text-xs font-light text-zinc-400 leading-relaxed mt-1">
-                    {proj.description}
-                  </p>
-                  <div className="flex gap-1.5 mt-1 items-center">
-                    <span className="text-[10px] font-mono text-zinc-500 uppercase">Stack:</span>
-                    <span className="text-[10px] font-mono text-zinc-400">
-                      {proj.techStack.join(', ')}
-                    </span>
-                  </div>
+                  <ul className="list-disc pl-5 flex flex-col gap-1.5 text-xs font-light text-zinc-400 leading-relaxed mt-1">
+                    {proj.bullets.map((bullet, idx) => (
+                      <li key={idx} className="marker:text-emerald-500/70">{bullet}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
@@ -289,9 +315,6 @@ export default function ResumePage() {
                     )}
                   </div>
                   <span className="text-[10px] text-zinc-500 font-mono">{cert.issuer} • {cert.date}</span>
-                  <p className="text-zinc-400 font-light mt-0.5 leading-relaxed">
-                    {cert.description}
-                  </p>
                 </div>
               ))}
             </div>

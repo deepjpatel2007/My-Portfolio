@@ -188,7 +188,7 @@ export default function SkillsPage() {
                 {cat.title}
               </h2>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {cat.items.map((skill) => (
                   <Card key={skill.name} className="p-5 flex items-start gap-4 hover:border-emerald-500/30 transition-all duration-300 group">
                     <div className="w-9 h-9 rounded-lg bg-zinc-950 border border-zinc-900 flex items-center justify-center shrink-0">

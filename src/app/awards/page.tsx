@@ -49,7 +49,7 @@ export default function AwardsPage() {
           variants={fadeInUp}
           className="text-zinc-400 text-lg md:text-xl font-light max-w-2xl leading-relaxed"
         >
-          Academic excellence, design achievements, and hackathon victories.
+          Academic achievement, engineering competitions, and professional certifications.
         </motion.p>
       </motion.div>
 

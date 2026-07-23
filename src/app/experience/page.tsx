@@ -113,7 +113,7 @@ export default function ExperiencePage() {
 
                 {/* Tech Chips */}
                 <div className="flex flex-col gap-2 border-t border-zinc-900/60 pt-4 mt-2">
-                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Technologies & Hardware Utilized</span>
+                  <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Skills & Tools</span>
                   <div className="flex flex-wrap gap-1.5 mt-1">
                     {exp.techStack.map((tech) => (
                       <span 

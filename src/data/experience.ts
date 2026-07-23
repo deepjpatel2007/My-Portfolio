@@ -18,9 +18,9 @@ export const experiences: Experience[] = [
     period: "Jan 2026 – Present",
     classification: "Technical Experience",
     description: [
-      "Tested and validated workflow configurations for an internship platform to optimize usability and system response.",
-      "Diagnosed functional bugs in user workflows and documented issues to facilitate quick developer resolutions.",
-      "Optimized internal data tracking pipelines to increase data processing efficiency."
+      "Supported testing and workflow optimization for an AI-powered internship platform using analytical troubleshooting and digital workflow coordination.",
+      "Applied troubleshooting, debugging, and analytical problem-solving skills to improve platform functionality, workflow efficiency, and overall user experience.",
+      "Collaborated with team members to support technical operations, ongoing platform development, and organization of digital workflows and documentation."
     ],
     techStack: ["Quality Assurance", "Technical Troubleshooting", "System Testing", "Data Workflows", "Debugging"]
   },
@@ -30,25 +30,26 @@ export const experiences: Experience[] = [
     company: "Canada Fire Chimney System",
     location: "Kitchener, ON",
     period: "Jun 2025 – Apr 2026",
-    classification: "Technical Experience",
+    classification: "Work Experience",
     description: [
-      "Inspected and certified commercial fire suppression systems to verify compliance with local safety codes.",
-      "Diagnosed mechanical and electrical faults in control circuits using multimeters and schematic diagrams to complete system repairs.",
-      "Generated detailed technical logs and compliance reports to maintain structured safety documentation."
+      "Conducted inspection, maintenance, and servicing of commercial fire protection and suppression systems in compliance with safety regulations.",
+      "Applied troubleshooting and analytical problem-solving skills to support repair and maintenance of mechanical and electrical fire safety equipment.",
+      "Collaborated with team members to complete technical service tasks, documentation, and installation projects efficiently and safely."
     ],
     techStack: ["Compliance Inspections", "Mechanical Systems", "Electrical Diagnostics", "Safety Standards", "Troubleshooting"]
   },
   {
     id: "first-robotics",
-    role: "STEM Program Assistant (Volunteer)",
+    role: "STEM Program Assistant",
     company: "FIRST Robotics Waterloo Region",
     location: "Kitchener, ON",
     period: "Jun 2025 – Sept 2025",
     classification: "Volunteer Experience",
     description: [
-      "Instructed students on Arduino configurations, sensor integration, and PWM motor controllers.",
-      "Troubleshot hardware interfacing faults and UART/I2C communication signals in prototype circuits.",
-      "Mentored workshop groups on applying the engineering design cycle to construct and test mobile robot chassis."
+      "Supported Arduino-based robotics workshops involving sensors, programming, and hardware integration activities.",
+      "Troubleshot hardware components and basic electrical systems to support engineering activities.",
+      "Communicated technical concepts and problem-solving strategies through hands-on learning environments.",
+      "Collaborated with team members to organize workshop activities and maintain structured learning sessions."
     ],
     techStack: ["Arduino Systems", "STEM Mentorship", "Robotics Interfacing", "Electrical Circuits", "Problem Solving"]
   }
