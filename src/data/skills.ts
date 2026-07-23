@@ -48,17 +48,12 @@ export const skillCategories: SkillCategory[] = [
       { name: "Embedded Programming", level: "Experienced", icon: "Cpu" },
       { name: "Hardware Integration", level: "Experienced", icon: "Cpu" },
       { name: "Sensor Integration", level: "Experienced", icon: "Cpu" },
+      { name: "OpenCV", level: "Experienced", icon: "Eye" },
       { name: "Debugging", level: "Experienced", icon: "Cpu" },
       { name: "Testing", level: "Experienced", icon: "Cpu" },
       { name: "Data Analysis", level: "Experienced", icon: "Cpu" },
       { name: "Control Systems", level: "Experienced", icon: "Cpu" },
       { name: "CAD Modeling", level: "Experienced", icon: "Cpu" }
-    ]
-  },
-  {
-    title: "Computer Vision",
-    items: [
-      { name: "OpenCV", level: "Experienced", icon: "Eye" }
     ]
   },
   {
