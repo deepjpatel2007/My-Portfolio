@@ -159,7 +159,7 @@ export default function ResumePage() {
               </div>
               <ul className="list-disc pl-5 mt-2 flex flex-col gap-1.5 text-xs font-light text-zinc-400">
                 <li className="marker:text-emerald-500/70">GPA: 4.0/4.0</li>
-                <li className="marker:text-emerald-500/70">Dean’s Honours List Recipient – Fall 2025 and Winter 2026</li>
+                <li className="marker:text-emerald-500/70">Dean's Honours List Recipient – Fall 2025 and Winter 2026</li>
               </ul>
             </div>
           </Card>

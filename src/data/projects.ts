@@ -27,8 +27,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "booking-management",
-    title: "CampusBook: Event & Booking Management System",
-    description: "An object-oriented software system developed as a core course project, implementing clean Java logic, event waitlists, confirmed booking trackers, and interactive dashboard interfaces.",
+    title: "CampusBook: Room Booking System",
+    description: "An room booking system developed in Java to resolve campus room scheduling conflicts. Employs modular design patterns, waitlist algorithms, and JUnit test suites, resulting in a fully validated codebase with 92% test coverage.",
     category: "Software",
     techStack: ["Java", "OOP Principles", "Data Structures", "JUnit", "Software Design Patterns"],
     problem: "Bridging theoretical computer science concepts (inheritance, polymorphism, runtime complexity) to realistic application architectures requires structural engineering discipline and clean class models.",
@@ -78,7 +78,7 @@ export const projects: Project[] = [
   {
     slug: "finlit-financial-coach",
     title: "FinLit: Personal Financial Coach",
-    description: "A gamified financial literacy web platform for teens and young adults featuring personalized learning modules, budgeting calculators, and interactive finance challenges.",
+    description: "A responsive web platform built to teach budgeting and compounding interest to young adults. Implements dynamic Chart.js visualizations, financial calculator models, and localStorage state persistence to deliver an interactive credit and budget simulation.",
     category: "Software",
     techStack: ["JavaScript", "HTML5/CSS3", "Chart.js", "Web Storage API", "Gamification Engine"],
     problem: "Basic financial literacy (saving, interest, credit, budgeting) is often not taught in schools, leading to early financial mistakes. Traditional finance tools are too clinical and lack educational engagement for younger audiences.",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
   {
     slug: "autonomous-vehicle-mapping",
     title: "Autonomous Vehicle Mapping System",
-    description: "An Arduino-based autonomous robot vehicle featuring ultrasonic obstacle detection, servo-based radar scanning, local grid mapping, and serial data transmission.",
+    description: "An autonomous robotic vehicle built to navigate static environments and plot obstacles in real time. Combines Arduino C++ firmware, running median sensor filtering, UART serial packet protocols, and a desktop Processing visualizer to achieve coordinate mapping with ±2cm accuracy.",
     category: "Robotics",
     techStack: ["C++", "Arduino", "Processing", "Ultrasonic Sensors", "UART/Serial", "Servo Motors"],
     problem: "Robotic mapping in confined, GPS-denied environments requires expensive LiDAR and high-performance computing hardware. Standard educational platforms lack real-time visual data displays, making it difficult to debug spatial navigation algorithms in physical environments.",
@@ -188,7 +188,7 @@ export const projects: Project[] = [
   {
     slug: "assistive-mobility-device",
     title: "Assistive Mobility Device Engineering Project",
-    description: "An Arduino-powered assistive mobility device engineered for enhanced accessibility, featuring embedded control systems, a custom CAD chassis, and real-time sensory alerts.",
+    description: "An intelligent sensor attachment prototype built to warn wheelchair users of tipping hazards and drop-offs. Integrates SolidWorks chassis designs, MPU6050 IMUs running complementary filters, ultrasonic sensors, and haptic feedback alerts to detect incline risks exceeding 15 degrees.",
     category: "Embedded",
     techStack: ["C++", "Arduino", "Embedded Systems", "CAD/SolidWorks", "Accelerometers", "Haptic Feedback"],
     problem: "Traditional mobility aids are passive and lack active safety indicators. Individuals with limited motor control are vulnerable to unrecognized drop-offs, sudden steps, or tipping hazards that manual aids fail to detect.",

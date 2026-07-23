@@ -60,16 +60,16 @@ export default function About() {
         {/* Left Side: Long-form bio */}
         <motion.div variants={fadeInUp} className="md:col-span-2 flex flex-col gap-6 text-zinc-400 text-sm md:text-base font-light leading-relaxed">
           <p>
-            I am a Computer Engineering student at the <strong className="text-white font-medium">University of Guelph</strong> with a strong interest in software engineering, embedded systems, robotics, and automation. My academic studies focus on how computing hardware and software interface to solve complex challenges, combining electrical design principles with computer science frameworks.
+            I am a Computer Engineering student at the <strong className="text-white font-medium">University of Guelph</strong>. I focus on developing software and embedded systems, working to understand how programming logic interacts with physical electrical components to solve practical problems.
           </p>
           <p>
-            I enjoy building engineering projects that combine hardware and software. My work involves designing circuit layouts, integrating sensors and actuators with microcontrollers, and writing control software. Through hands-on prototyping, I have developed a structured approach to debugging hardware issues and software errors, continuously testing and refining designs to ensure stability and efficiency.
+            What interests me about engineering is the process of translating a concept into a functional design. I enjoy taking an initial idea, mapping out the architecture, selecting components, and writing the code to bring the system to life. Whether it is configuring microcontroller pins, establishing serial data streams, or debugging logical errors, there is a distinct satisfaction in systematically testing and tuning a complete system until all hardware and software parts operate together.
           </p>
           <p>
-            As an engineer, my approach is defined by a desire to understand how systems operate from the physical board level up to high-level application code. I value logical problem solving, close team collaboration, and the rapid adoption of new technologies. I focus on developing practical, reliable solutions that meet strict constraints and deliver measurable impact.
+            When approaching engineering projects, I focus on breaking complex requirements down into manageable modules. I value clean documentation, structured test cases, and collaborative teamwork. I am comfortable learning new libraries or scripting frameworks as project needs evolve, and I prioritize iterating on designs based on test outcomes to improve performance and reliability.
           </p>
           <p>
-            I am currently seeking internship and co-op opportunities in <strong className="text-emerald-400 font-medium">Software Engineering, Embedded Systems, Robotics, Automation, and Full-Stack Development</strong>. I am eager to apply my technical curiosity and engineering foundation to production codebases, learn from experienced teams, and contribute to meaningful projects.
+            I am seeking co-op and internship opportunities in <strong className="text-emerald-400 font-medium">Software Engineering, Embedded Systems, Robotics, Automation, and Full-Stack Development</strong>. I look forward to contributing to active engineering teams, expanding my technical capabilities, and applying my coursework and project experience to deliver reliable, well-tested code.
           </p>
         </motion.div>
 
@@ -97,8 +97,8 @@ export default function About() {
                 <BookOpen className="w-5 h-5 text-zinc-500 shrink-0 mt-0.5" />
                 <div>
                   <h3 className="text-sm font-semibold text-white">University of Guelph</h3>
-                  <p className="text-xs text-zinc-500 font-mono">B.Eng. in Computer Engineering</p>
-                  <p className="text-xs text-zinc-500 font-mono">Sept 2025 - Present</p>
+                  <p className="text-xs text-zinc-500 font-mono">Bachelor of Engineering, Computer Engineering (Co-op)</p>
+                  <p className="text-xs text-zinc-500 font-mono">Sept 2025 – Present</p>
                 </div>
               </div>
 
