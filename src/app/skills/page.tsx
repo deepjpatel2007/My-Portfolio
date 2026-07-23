@@ -32,7 +32,6 @@ import {
 } from 'lucide-react';
 import { Github } from '@/components/ui/BrandIcons';
 import { Card } from '@/components/ui/Card';
-import { skillCategories } from '@/data/skills';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
@@ -80,36 +79,70 @@ const iconMap: Record<string, React.ReactNode> = {
 };
 
 export default function SkillsPage() {
-  const displayCategories = [
+  const categories = [
     {
       title: "Programming Languages",
-      icon: <Code className="w-5 h-5 text-emerald-400" />,
-      description: "Proficient in C, C++, Python, Java, SQL (PostgreSQL, Oracle, MySQL), with experience in Object-Oriented Programming (OOP), data structures, algorithms, and software development principles."
+      items: [
+        { name: "C", description: "Low-level programming, memory management, and foundational systems development.", icon: "Code" },
+        { name: "C++", description: "Object-oriented programming, data structures, and engineering-focused application development.", icon: "Code" },
+        { name: "Python", description: "Scripting, automation, data processing, and computer vision development.", icon: "FileCode" },
+        { name: "Java", description: "Object-oriented application development and coursework-based software projects.", icon: "Terminal" },
+        { name: "SQL", description: "Querying and managing relational databases using PostgreSQL, Oracle, and MySQL.", icon: "Database" },
+        { name: "Object-Oriented Programming", description: "Applying encapsulation, inheritance, polymorphism, and modular program design.", icon: "Code" }
+      ]
     },
     {
       title: "Development Tools",
-      icon: <Terminal className="w-5 h-5 text-emerald-400" />,
-      description: "Experienced using Git, GitHub, Visual Studio Code, Eclipse, IntelliJ IDEA, and collaborative software development workflows."
+      items: [
+        { name: "Git", description: "Version control, branching, commits, and source-code management.", icon: "Terminal" },
+        { name: "GitHub", description: "Repository hosting, project documentation, collaboration, and deployment workflows.", icon: "Github" },
+        { name: "Visual Studio Code", description: "Primary development environment for web, Python, and embedded project work.", icon: "Terminal" },
+        { name: "Eclipse", description: "Java development, debugging, and coursework-based application development.", icon: "Terminal" },
+        { name: "IntelliJ IDEA", description: "Java development, project organization, and object-oriented programming workflows.", icon: "Terminal" }
+      ]
     },
     {
       title: "Engineering & Design Software",
-      icon: <Layers className="w-5 h-5 text-emerald-400" />,
-      description: "Proficient with SolidWorks, AutoCAD, MATLAB, Microsoft Excel, Word, PowerPoint, Microsoft 365, and engineering design workflows including CAD modeling and technical documentation."
+      items: [
+        { name: "SolidWorks", description: "3D CAD modelling, part design, assemblies, and engineering prototypes.", icon: "Layers" },
+        { name: "AutoCAD", description: "Technical drafting, design documentation, and engineering drawings.", icon: "FileText" },
+        { name: "MATLAB", description: "Engineering calculations, numerical analysis, and technical coursework.", icon: "Activity" },
+        { name: "Microsoft Excel", description: "Data analysis, reporting, formulas, automation, and structured technical workbooks.", icon: "Table" },
+        { name: "Microsoft Word", description: "Technical reports, documentation, and professional written communication.", icon: "FileText" },
+        { name: "Microsoft PowerPoint", description: "Engineering presentations, project summaries, and technical communication.", icon: "MessageSquare" },
+        { name: "Microsoft 365", description: "Collaboration and productivity using Microsoft’s workplace tools.", icon: "Layers" }
+      ]
     },
     {
       title: "Technical Skills",
-      icon: <Cpu className="w-5 h-5 text-emerald-400" />,
-      description: "Experience with Arduino systems, embedded programming, hardware integration, sensor integration, computer vision (OpenCV), debugging, testing, data analysis, control systems, and CAD modeling."
+      items: [
+        { name: "Arduino Systems", description: "Developing microcontroller-based prototypes using sensors, actuators, and programmed logic.", icon: "Cpu" },
+        { name: "Embedded Programming", description: "Writing and testing code that controls hardware behaviour and system responses.", icon: "Cpu" },
+        { name: "Hardware Integration", description: "Connecting and coordinating electronic components within complete prototypes.", icon: "Layers" },
+        { name: "Sensor Integration", description: "Reading, processing, and using sensor data in Arduino-based systems.", icon: "Activity" },
+        { name: "OpenCV", description: "Computer vision fundamentals, image processing, and vision-based programming.", icon: "Eye" },
+        { name: "Debugging", description: "Identifying and resolving software, hardware, and integration issues systematically.", icon: "Search" },
+        { name: "Testing", description: "Validating functionality, checking system behaviour, and improving reliability through iteration.", icon: "Search" },
+        { name: "Data Analysis", description: "Organizing, interpreting, and presenting technical and project-related data.", icon: "Database" },
+        { name: "Control Systems", description: "Implementing programmed responses based on sensor readings and system conditions.", icon: "Orbit" },
+        { name: "CAD Modeling", description: "Creating and refining engineering components and prototype designs.", icon: "Layers" }
+      ]
     },
     {
       title: "Professional Skills",
-      icon: <Sparkles className="w-5 h-5 text-emerald-400" />,
-      description: "Strong analytical and problem-solving abilities, effective written and verbal communication, teamwork, adaptability, leadership, technical documentation, and a proactive approach to learning and engineering challenges."
+      items: [
+        { name: "Problem Solving", description: "Breaking complex challenges into manageable steps and developing practical solutions.", icon: "Sparkles" },
+        { name: "Communication", description: "Explaining technical ideas clearly through written, verbal, and visual communication.", icon: "MessageSquare" },
+        { name: "Teamwork", description: "Collaborating effectively on engineering projects, competitions, and shared deliverables.", icon: "Users" },
+        { name: "Adaptability", description: "Learning unfamiliar tools and adjusting to new technical requirements.", icon: "Orbit" },
+        { name: "Leadership", description: "Supporting team organization, decision-making, and project progress.", icon: "Users" },
+        { name: "Proactive Attitude", description: "Taking initiative, identifying next steps, and continuously improving project work.", icon: "Sparkles" }
+      ]
     }
   ];
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-6 flex flex-col gap-12">
+    <div className="w-full max-w-5xl mx-auto px-6 flex flex-col gap-12">
       
       {/* 1. Header Section */}
       <motion.div 
@@ -138,34 +171,43 @@ export default function SkillsPage() {
       {/* 2. Categorized Skills Matrix */}
       <motion.div 
         layout
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-12"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {displayCategories.map((cat, idx) => (
+        <AnimatePresence mode="popLayout">
+          {categories.map((cat) => (
             <motion.div 
               layout
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: idx * 0.05 }}
-              key={cat.title}
-              className="h-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              key={cat.title} 
+              className="flex flex-col gap-6"
             >
-              <Card className="p-6 md:p-8 flex items-start gap-5 hover:border-emerald-500/30 transition-all duration-300 h-full">
-                <div className="w-10 h-10 rounded-xl bg-zinc-950 border border-zinc-900 flex items-center justify-center shrink-0 mt-0.5">
-                  {cat.icon}
-                </div>
-                <div className="flex flex-col gap-2.5">
-                  <h2 className="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase border-l-2 border-emerald-500 pl-3">
-                    {cat.title}
-                  </h2>
-                  <p className="text-zinc-300 text-sm font-light leading-relaxed">
-                    {cat.description}
-                  </p>
-                </div>
-              </Card>
+              <h2 className="text-xs font-mono font-bold tracking-widest text-emerald-400 uppercase border-l-2 border-emerald-500 pl-3">
+                {cat.title}
+              </h2>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {cat.items.map((skill) => (
+                  <Card key={skill.name} className="p-5 flex items-start gap-4 hover:border-emerald-500/30 transition-all duration-300 group">
+                    <div className="w-9 h-9 rounded-lg bg-zinc-950 border border-zinc-900 flex items-center justify-center shrink-0">
+                      {iconMap[skill.icon] || <Cpu className="w-4 h-4 text-emerald-400" />}
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <h3 className="text-sm font-bold text-white font-mono group-hover:text-emerald-400 transition-colors">
+                        {skill.name}
+                      </h3>
+                      <p className="text-zinc-400 text-xs font-light leading-relaxed">
+                        {skill.description}
+                      </p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </motion.div>
           ))}
-        </div>
+        </AnimatePresence>
       </motion.div>
 
     </div>
