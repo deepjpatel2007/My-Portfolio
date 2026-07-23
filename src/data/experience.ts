@@ -6,6 +6,7 @@ export interface Experience {
   period: string;
   description: string[];
   techStack: string[];
+  classification: 'Technical Experience' | 'Work Experience' | 'Volunteer Experience' | 'Internship';
 }
 
 export const experiences: Experience[] = [
@@ -15,10 +16,11 @@ export const experiences: Experience[] = [
     company: "Rivo Careers",
     location: "Kitchener, ON",
     period: "Jan 2026 – Present",
+    classification: "Technical Experience",
     description: [
-      "Tested and validated workflow configurations for an AI-integrated platform to optimize usability and system performance.",
-      "Diagnosed and documented software errors in client flows, coordinating with developers to ensure quick resolution of issues.",
-      "Collaborated with project managers to refine internal data tracking pipelines and improve overall database entry speed."
+      "Tested and validated workflow configurations for an internship platform to optimize usability and system response.",
+      "Diagnosed functional bugs in user workflows and documented issues to facilitate quick developer resolutions.",
+      "Optimized internal data tracking pipelines to increase data processing efficiency."
     ],
     techStack: ["Quality Assurance", "Technical Troubleshooting", "System Testing", "Data Workflows", "Debugging"]
   },
@@ -28,10 +30,11 @@ export const experiences: Experience[] = [
     company: "Canada Fire Chimney System",
     location: "Kitchener, ON",
     period: "Jun 2025 – Apr 2026",
+    classification: "Technical Experience",
     description: [
-      "Inspected and certified commercial fire suppression layouts in accordance with safety codes and safety standards.",
-      "Diagnosed mechanical and electrical faults in safety circuitry using multimeters and circuit diagrams to perform system repairs.",
-      "Authored technical service logs and safety reports, ensuring compliance documentation was completed on schedule."
+      "Inspected and certified commercial fire suppression systems to verify compliance with local safety codes.",
+      "Diagnosed mechanical and electrical faults in control circuits using multimeters and schematic diagrams to complete system repairs.",
+      "Generated detailed technical logs and compliance reports to maintain structured safety documentation."
     ],
     techStack: ["Compliance Inspections", "Mechanical Systems", "Electrical Diagnostics", "Safety Standards", "Troubleshooting"]
   },
@@ -41,10 +44,11 @@ export const experiences: Experience[] = [
     company: "FIRST Robotics Waterloo Region",
     location: "Kitchener, ON",
     period: "Jun 2025 – Sept 2025",
+    classification: "Volunteer Experience",
     description: [
-      "Instructed student groups on Arduino microcontroller setups, including sensor integration and basic PWM motor controls.",
-      "Troubleshot hardware interfacing issues and UART/I2C communication signals during team build workshops.",
-      "Mentored workshop groups on applying the engineering design process to build, test, and optimize tracked robot chassis."
+      "Instructed students on Arduino configurations, sensor integration, and PWM motor controllers.",
+      "Troubleshot hardware interfacing faults and UART/I2C communication signals in prototype circuits.",
+      "Mentored workshop groups on applying the engineering design cycle to construct and test mobile robot chassis."
     ],
     techStack: ["Arduino Systems", "STEM Mentorship", "Robotics Interfacing", "Electrical Circuits", "Problem Solving"]
   }

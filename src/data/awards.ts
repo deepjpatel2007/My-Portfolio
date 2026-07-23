@@ -24,8 +24,8 @@ export const awards: Award[] = [
   {
     title: "1st Place — Guelph Engineering Competition",
     issuer: "University of Guelph",
-    date: "Jan 2026",
-    description: "Awarded First Place at the University of Guelph Engineering Competition after developing an engineering solution under competitive design constraints. Qualified to represent the university at the Ontario Engineering Competition (OEC).",
+    date: "Oct 2025",
+    description: "Awarded First Place at the University of Guelph Engineering Competition after developing an engineering solution under competitive design constraints. Qualified to represent the University of Guelph at the Ontario Engineering Competition (OEC) in January 2026.",
     category: "honour"
   },
   {

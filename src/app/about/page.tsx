@@ -60,16 +60,16 @@ export default function About() {
         {/* Left Side: Long-form bio */}
         <motion.div variants={fadeInUp} className="md:col-span-2 flex flex-col gap-6 text-zinc-400 text-sm md:text-base font-light leading-relaxed">
           <p>
-            I am a Computer Engineering student at the <strong className="text-white font-medium">University of Guelph</strong>. I focus on bridging hardware and software, designing applications and embedded systems that work reliably and solve practical engineering problems.
+            I am a Computer Engineering student at the <strong className="text-white font-medium">University of Guelph</strong> with a strong interest in software engineering, embedded systems, robotics, and automation. My academic studies focus on how computing hardware and software interface to solve complex challenges, combining electrical design principles with computer science frameworks.
           </p>
           <p>
-            My path into engineering began with a curiosity about how devices function behind their enclosures. Prototyping simple circuits and writing my first scripts to blink LEDs opened up a world of hardware-software integration. That curiosity evolved into a formal study of computer engineering, learning how low-level drivers, data structures, and algorithms work together.
+            I enjoy building engineering projects that combine hardware and software. My work involves designing circuit layouts, integrating sensors and actuators with microcontrollers, and writing control software. Through hands-on prototyping, I have developed a structured approach to debugging hardware issues and software errors, continuously testing and refining designs to ensure stability and efficiency.
           </p>
           <p>
-            Today, I enjoy building modular software systems and interactive robotics projects. Whether I am writing non-blocking microcontroller firmware in C/C++, building object-oriented applications in Java, or developing responsive full-stack interfaces with React and TypeScript, I emphasize clean architecture, thorough debugging, and system optimization.
+            As an engineer, my approach is defined by a desire to understand how systems operate from the physical board level up to high-level application code. I value logical problem solving, close team collaboration, and the rapid adoption of new technologies. I focus on developing practical, reliable solutions that meet strict constraints and deliver measurable impact.
           </p>
           <p>
-            I am currently seeking <strong className="text-emerald-400 font-medium">Software Engineering, Embedded Systems, and Automation</strong> internship opportunities. I am eager to apply my technical skills to production codebases, collaborate with multidisciplinary engineering teams, and contribute to building systems at scale.
+            I am currently seeking internship and co-op opportunities in <strong className="text-emerald-400 font-medium">Software Engineering, Embedded Systems, Robotics, Automation, and Full-Stack Development</strong>. I am eager to apply my technical curiosity and engineering foundation to production codebases, learn from experienced teams, and contribute to meaningful projects.
           </p>
         </motion.div>
 

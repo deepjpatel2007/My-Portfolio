@@ -21,12 +21,12 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: "Deep Patel | Computer Engineering Student",
-  description: "Personal engineering portfolio of Deep Patel, a Computer Engineering student at the University of Guelph specializing in embedded systems, RTOS, robotics, automation, and full-stack software development.",
-  keywords: ["Deep Patel", "Computer Engineering", "Embedded Systems", "Software Engineer", "University of Guelph", "RTOS", "Robotics", "CAN Bus", "STM32", "FreeRTOS", "Next.js"],
+  description: "Personal engineering portfolio of Deep Patel, a Computer Engineering student at the University of Guelph specializing in embedded systems, software engineering, robotics, and full-stack development.",
+  keywords: ["Deep Patel", "Computer Engineering", "Embedded Systems", "Software Engineer", "University of Guelph", "Robotics", "Arduino", "TypeScript", "Next.js", "C++"],
   authors: [{ name: "Deep Patel" }],
   openGraph: {
     title: "Deep Patel | Computer Engineering Student",
-    description: "Personal engineering portfolio of Deep Patel, a Computer Engineering student at the University of Guelph specializing in embedded systems, RTOS, robotics, and full-stack software development.",
+    description: "Personal engineering portfolio of Deep Patel, a Computer Engineering student at the University of Guelph specializing in embedded systems, software engineering, robotics, and full-stack development.",
     url: "https://deeppatel.dev",
     siteName: "Deep Patel Portfolio",
     locale: "en_US",

@@ -58,8 +58,7 @@ export default function ExperiencePage() {
         className="relative pl-6 md:pl-10 before:absolute before:left-2.5 md:before:left-5 before:top-2 before:bottom-2 before:w-[1px] before:bg-zinc-900 flex flex-col gap-10"
       >
         {experiences.map((exp) => {
-          // Identify work vs academic roles for node icons
-          const isAcademic = exp.id.includes('uofg') || exp.id.includes('gryphon');
+          const isVolunteer = exp.classification === 'Volunteer Experience';
 
           return (
             <motion.div 
@@ -69,7 +68,7 @@ export default function ExperiencePage() {
             >
               {/* Node Icon on Timeline Line */}
               <div className="absolute -left-[30px] md:-left-[43px] top-1 w-6 h-6 md:w-8 md:h-8 rounded-full bg-zinc-950 border border-zinc-800 flex items-center justify-center group-hover:border-emerald-500/50 transition-all duration-300 z-10 shadow-lg">
-                {isAcademic ? (
+                {isVolunteer ? (
                   <GraduationCap className="w-3 h-3 md:w-4 md:h-4 text-emerald-400" />
                 ) : (
                   <Briefcase className="w-3 h-3 md:w-4 md:h-4 text-emerald-400" />
@@ -83,7 +82,7 @@ export default function ExperiencePage() {
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-2 border-b border-zinc-900/60 pb-4">
                   <div className="flex flex-col gap-1">
                     <span className="text-zinc-500 font-mono text-[10px] uppercase tracking-wider">
-                      {isAcademic ? 'Academic & Extracurricular' : 'Industry Internship'}
+                      {exp.classification}
                     </span>
                     <h2 className="text-xl md:text-2xl font-extrabold text-white tracking-tight">
                       {exp.role} <span className="text-zinc-500 font-normal">at</span> <span className="text-emerald-400">{exp.company}</span>

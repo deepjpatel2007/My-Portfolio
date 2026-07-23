@@ -128,12 +128,12 @@ export const projects: Project[] = [
   },
   {
     slug: "autonomous-vehicle-mapping",
-    title: "Autonomous Vehicle Mapping & Telemetry System",
-    description: "An Arduino-based autonomous robot vehicle featuring ultrasonic obstacle detection, servo-based radar scanning, local grid mapping, and serial telemetry transmission.",
+    title: "Autonomous Vehicle Mapping System",
+    description: "An Arduino-based autonomous robot vehicle featuring ultrasonic obstacle detection, servo-based radar scanning, local grid mapping, and serial data transmission.",
     category: "Robotics",
     techStack: ["C++", "Arduino", "Processing", "Ultrasonic Sensors", "UART/Serial", "Servo Motors"],
-    problem: "Robotic mapping in confined, GPS-denied environments requires expensive LiDAR and high-performance computing hardware. Standard educational platforms lack real-time visual telemetry, making it difficult to debug spatial navigation algorithms in physical environments.",
-    objective: "To design and engineer an autonomous, low-power tracked vehicle capable of executing 180-degree radar sweeps, mapping surrounding obstacles onto a visual coordinate grid, and transmitting telemetry back to a workstation.",
+    problem: "Robotic mapping in confined, GPS-denied environments requires expensive LiDAR and high-performance computing hardware. Standard educational platforms lack real-time visual data displays, making it difficult to debug spatial navigation algorithms in physical environments.",
+    objective: "To design and engineer an autonomous, low-power tracked vehicle capable of executing 180-degree radar sweeps, mapping surrounding obstacles onto a visual coordinate grid, and transmitting sensor data back to a workstation.",
     process: [
       "Designed and assembled a 2WD robotic chassis, integrating a dual H-bridge motor driver and dual-channel power rails.",
       "Developed modular C++ firmware for the Arduino Uno, implementing non-blocking task loops for ultrasonic sensor timing, servo sweeps, and motor state triggers.",
@@ -152,7 +152,7 @@ export const projects: Project[] = [
 |                                |  - Distance Polling   |  |
 |  +----------------+    PWM     |  - Servo Sweep Loop   |  |
 |  | SG90 Servo     |<-----------|  - State Machine      |  |
-|  +----------------+            |  - Telemetry Stream   |  |
+|  +----------------+            |  - Serial Data Stream |  |
 |                                +-----------+-----------+  |
 |  +----------------+    PWM                 |              |
 |  | L298N Motor    |<-----------------------+              |
@@ -168,7 +168,7 @@ export const projects: Project[] = [
     `,
     challenges: [
       {
-        title: "Telemetry Data Desynchronization",
+        title: "Serial Data Desynchronization",
         description: "At higher sweep speeds, raw serial data packets clashed or arrived incomplete, causing the visualizer to misalign coordinates and render distorted obstacle grids.",
         solution: "Developed a lightweight custom data framing protocol. Each distance-angle coordinate pair was wrapped with headers (STX) and footers (ETX) alongside a checksum byte. If the visualizer detected packet corruption, it discarded the corrupted frame rather than desynchronizing the entire serial parser stream."
       },
